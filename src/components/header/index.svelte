@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Connect from '@/components/connect/index.svelte'
+  import { isConnect, myShortAddress } from '@/stores'
 </script>
 
 <div class="header">
@@ -9,12 +11,15 @@
     </a>
   </div>
   <div class="header-menu">
-    <button class="normal-button">Wallet Connect</button>
+    {#if $isConnect === true}
+      <div class="normal-button-fake">{$myShortAddress}</div>
+    {:else}
+      <Connect />
+    {/if}
   </div>
 </div>
 
 <!-- <div class="header-dummy" /> -->
-
 <style lang="scss">
   .header {
     position: fixed;
@@ -55,11 +60,5 @@
     font-family: 'Trajan Pro Bold';
     line-height: 28px;
     color: $text-color;
-  }
-
-  @media screen and (max-width: 1000px) {
-    .normal-button {
-      display: none;
-    }
   }
 </style>

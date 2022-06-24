@@ -29,7 +29,7 @@
 <div class="wrap">
   <div class="title-wrap">
     <div class="title">Clones Never Die</div>
-    <div class="sub-title">- Nectar War -</div>
+    <div class="sub-title">- clonecraft -</div>
   </div>
   {#each menuData as item}
     <Menu name={item.name} link={item.link} />

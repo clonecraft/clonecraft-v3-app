@@ -1,0 +1,3 @@
+const testCA = ''
+
+export { testCA }

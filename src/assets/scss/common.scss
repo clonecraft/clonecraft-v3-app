@@ -37,6 +37,20 @@ html body {
   flex-direction: column;
 }
 
+.normal-button-fake {
+  border: 1px solid $inline-color;
+  padding: 10px 25px;
+  min-width: 123.758px;
+  color: $text-color;
+  text-align: center;
+  font-family: 'Trajan Pro Regular';
+  background-color: $inline-color;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .normal-button {
   border: 1px solid $inline-color;
   padding: 10px 25px;
