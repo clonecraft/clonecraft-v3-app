@@ -3,50 +3,44 @@
   import { selectedV3 } from '@/stores/index'
 
   function select(item: any) {
-    if ($selectedV3.id === item.id) {
-      $selectedV3 = {
+    $selectedV3 = { ...item }
+    $selectedAsset = {
+      background: {
         id: null,
-      }
-    } else {
-      $selectedV3 = { ...item }
-      $selectedAsset = {
-        background: {
-          id: null,
-        },
-        situation: {
-          id: null,
-        },
-        weapon: {
-          id: null,
-        },
-        body: {
-          id: null,
-        },
-        tattoo: {
-          id: null,
-        },
-        mouth: {
-          id: null,
-        },
-        eyes: {
-          id: null,
-        },
-        clothes: {
-          id: null,
-        },
-        hat: {
-          id: null,
-        },
-        accessory: {
-          id: null,
-        },
-        mask: {
-          id: null,
-        },
-        effect: {
-          id: null,
-        },
-      }
+      },
+      situation: {
+        id: null,
+      },
+      weapon: {
+        id: null,
+      },
+      body: {
+        id: null,
+      },
+      tattoo: {
+        id: null,
+      },
+      mouth: {
+        id: null,
+      },
+      eyes: {
+        id: null,
+      },
+      clothes: {
+        id: null,
+      },
+      hat: {
+        id: null,
+      },
+      accessory: {
+        id: null,
+      },
+      mask: {
+        id: null,
+      },
+      effect: {
+        id: null,
+      },
     }
   }
 </script>
@@ -58,21 +52,23 @@
       {#each $myV3List as item}
         <div class="omega-wrap">
           <div class="omega-frame">
-            <div
-              class="omega-image"
-              style="background-image: url({item.image});"
-              on:click={() => select(item)}
-            >
-              {#if $selectedV3.id === item.id}
+            {#if $selectedV3.id === item.id}
+              <div class="omega-image" style="cursor: auto; background-image: url({item.image});">
                 <div class="selected-equip-text-wrap">
                   <div class="equip-text">selected</div>
                 </div>
-              {:else}
+              </div>
+            {:else}
+              <div
+                class="omega-image"
+                style="background-image: url({item.image});"
+                on:click={() => select(item)}
+              >
                 <div class="equip-text-wrap">
                   <div class="equip-text">is Select?</div>
                 </div>
-              {/if}
-            </div>
+              </div>
+            {/if}
             <div class="omega-title">CxNxD Omega</div>
             <div class="omega-number">#{item.id}</div>
           </div>

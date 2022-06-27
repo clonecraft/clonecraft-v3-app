@@ -22,7 +22,6 @@
     $myShortAddress = `${$myAddress.slice(0, 6)}...${$myAddress.slice(-4)}`
     $myV3List = await getMyV3List(klaytn.selectedAddress)
     $myAssetList = await getMyAssetList(klaytn.selectedAddress)
-    console.log($myAssetList)
     $isConnect = true
   }
 
