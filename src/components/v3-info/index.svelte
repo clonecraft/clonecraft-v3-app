@@ -1,7 +1,56 @@
 <script lang="ts">
-  import { selectedV3, v3ImageMergeLoading } from '@/stores/index'
+  import { selectedAsset, selectedV3, v3ImageMergeLoading } from '@/stores/index'
   import { Circle } from 'svelte-loading-spinners'
+
+  import TransparentModal from '@/components/modal/transparent.svelte'
+  import { onMount } from 'svelte'
+
+  onMount(() => {
+    $selectedV3 = {
+      id: null,
+    }
+    $selectedAsset = {
+      background: {
+        id: null,
+      },
+      situation: {
+        id: null,
+      },
+      weapon: {
+        id: null,
+      },
+      body: {
+        id: null,
+      },
+      tattoo: {
+        id: null,
+      },
+      mouth: {
+        id: null,
+      },
+      eyes: {
+        id: null,
+      },
+      clothes: {
+        id: null,
+      },
+      hat: {
+        id: null,
+      },
+      accessory: {
+        id: null,
+      },
+      mask: {
+        id: null,
+      },
+      effect: {
+        id: null,
+      },
+    }
+  })
 </script>
+
+<TransparentModal modalState={$v3ImageMergeLoading} />
 
 <div class="box">
   <div class="box-title">CxNxD Omega Clone Info</div>
