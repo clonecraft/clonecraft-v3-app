@@ -1,76 +1,87 @@
 <script lang="ts">
+  import { isConnect, myV3List, selectedAsset } from '@/stores/index'
+  import { selectedV3 } from '@/stores/index'
+
+  function select(item: any) {
+    if ($selectedV3.id === item.id) {
+      $selectedV3 = {
+        id: null,
+      }
+    } else {
+      $selectedV3 = { ...item }
+      $selectedAsset = {
+        background: {
+          id: null,
+        },
+        situation: {
+          id: null,
+        },
+        weapon: {
+          id: null,
+        },
+        body: {
+          id: null,
+        },
+        tattoo: {
+          id: null,
+        },
+        mouth: {
+          id: null,
+        },
+        eyes: {
+          id: null,
+        },
+        clothes: {
+          id: null,
+        },
+        hat: {
+          id: null,
+        },
+        accessory: {
+          id: null,
+        },
+        mask: {
+          id: null,
+        },
+        effect: {
+          id: null,
+        },
+      }
+    }
+  }
 </script>
 
 <div class="box">
   <div class="box-title">CxNxD Omega Clone List</div>
-  <div class="box-content">
-    <div class="omega-wrap">
-      <div class="omega-frame">
-        <div class="omega-image">
-          <div class="equip-text-wrap">
-            <div class="equip-text">is Select?</div>
+  {#if $isConnect === true}
+    <div class="box-content">
+      {#each $myV3List as item}
+        <div class="omega-wrap">
+          <div class="omega-frame">
+            <div
+              class="omega-image"
+              style="background-image: url({item.image});"
+              on:click={() => select(item)}
+            >
+              {#if $selectedV3.id === item.id}
+                <div class="selected-equip-text-wrap">
+                  <div class="equip-text">selected</div>
+                </div>
+              {:else}
+                <div class="equip-text-wrap">
+                  <div class="equip-text">is Select?</div>
+                </div>
+              {/if}
+            </div>
+            <div class="omega-title">CxNxD Omega</div>
+            <div class="omega-number">#{item.id}</div>
           </div>
         </div>
-        <div class="omega-title">CxNxD Omega</div>
-        <div class="omega-number">#2022</div>
-      </div>
+      {/each}
     </div>
-    <div class="omega-wrap">
-      <div class="omega-frame">
-        <div class="omega-image">
-          <div class="equip-text-wrap">
-            <div class="equip-text">is Select?</div>
-          </div>
-        </div>
-        <div class="omega-title">CxNxD Omega</div>
-        <div class="omega-number">#2022</div>
-      </div>
-    </div>
-    <div class="omega-wrap">
-      <div class="omega-frame">
-        <div class="omega-image">
-          <div class="equip-text-wrap">
-            <div class="equip-text">is Select?</div>
-          </div>
-        </div>
-        <div class="omega-title">CxNxD Omega</div>
-        <div class="omega-number">#2022</div>
-      </div>
-    </div>
-    <div class="omega-wrap">
-      <div class="omega-frame">
-        <div class="omega-image">
-          <div class="equip-text-wrap">
-            <div class="equip-text">is Select?</div>
-          </div>
-        </div>
-        <div class="omega-title">CxNxD Omega</div>
-        <div class="omega-number">#2022</div>
-      </div>
-    </div>
-    <div class="omega-wrap">
-      <div class="omega-frame">
-        <div class="omega-image">
-          <div class="equip-text-wrap">
-            <div class="equip-text">is Select?</div>
-          </div>
-        </div>
-        <div class="omega-title">CxNxD Omega</div>
-        <div class="omega-number">#2022</div>
-      </div>
-    </div>
-    <div class="omega-wrap">
-      <div class="omega-frame">
-        <div class="omega-image">
-          <div class="equip-text-wrap">
-            <div class="equip-text">is Select?</div>
-          </div>
-        </div>
-        <div class="omega-title">CxNxD Omega</div>
-        <div class="omega-number">#2022</div>
-      </div>
-    </div>
-  </div>
+  {:else}
+    <div class="box-content" style="height: 240px;">please connect wallet</div>
+  {/if}
 </div>
 
 <style lang="scss">
@@ -84,9 +95,12 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+  .equip-text {
+    user-select: none;
+  }
   .omega-wrap {
     min-width: 20%;
-    padding: 6px;
+    padding: 5px;
     box-sizing: border-box;
     .omega-frame {
       border: 1px solid $inline-color;
@@ -121,6 +135,18 @@
           align-items: center;
           .equip-text {
             display: none;
+          }
+        }
+        .selected-equip-text-wrap {
+          display: flex;
+          width: 100%;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+          background-color: rgba(0, 0, 0, 0.8);
+          .equip-text {
+            display: block;
+            opacity: 1;
           }
         }
       }

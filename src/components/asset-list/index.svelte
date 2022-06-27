@@ -1,84 +1,146 @@
 <script lang="ts">
+  import { Canvas, Image } from 'canvas'
+  import mergeImages from 'merge-images'
+  import { myAssetList, selectedV3, selectedAsset, v3ImageMergeLoading } from '@/stores/index'
+
+  const assetMenuList = [
+    {
+      type: 'background',
+    },
+    {
+      type: 'situation',
+    },
+    {
+      type: 'weapon',
+    },
+    {
+      type: 'body',
+    },
+    {
+      type: 'tattoo',
+    },
+    {
+      type: 'mouth',
+    },
+    {
+      type: 'eyes',
+    },
+    {
+      type: 'clothes',
+    },
+    {
+      type: 'hat',
+    },
+    {
+      type: 'accessory',
+    },
+    {
+      type: 'mask',
+    },
+    {
+      type: 'effect',
+    },
+  ]
+  let selectedType = 'background'
+
+  async function select(item: any) {
+    if ($selectedV3.id === null) {
+      alert('omega를 먼저 선택 해주세요.')
+    } else {
+      $v3ImageMergeLoading = true
+      const assetObj = {
+        id: item.id,
+        name: item.name,
+        image: item.image,
+        base_image: item.base_image,
+      }
+      $selectedV3[item.asset_type] = assetObj
+      $selectedAsset[item.asset_type] = item
+
+      const assetList = assetImageList()
+      const baseImageList: Array<object> = assetBaseImageList(assetList)
+      const mergedImage = await merge(baseImageList)
+      $selectedV3.image = mergedImage
+      $v3ImageMergeLoading = false
+    }
+  }
+
+  async function merge(imgData: Array<object>): Promise<string> {
+    const b64 = await mergeImages(imgData, {
+      Canvas: Canvas,
+      Image: Image,
+      width: 2500,
+      height: 2500,
+      crossOrigin: 'Anonymous',
+    })
+    // const base64Img: string = b64.split(',')[1]
+    const base64Img: string = b64
+    return base64Img
+  }
+
+  function assetBaseImageList(assetList: any): Array<object> {
+    const baseImageList = []
+    for (let i = 0; i < assetList.length; i++) {
+      baseImageList.push({ src: assetList[i].base_image })
+    }
+    return baseImageList
+  }
+
+  function assetImageList() {
+    const data = []
+    for (let i = 0; i < assetMenuList.length; i++) {
+      data.push($selectedV3[assetMenuList[i].type])
+    }
+    return data
+  }
 </script>
 
 <div class="box">
   <div class="box-title">CxNxD Asset List</div>
   <div class="box-content">
     <div class="asset-type">
-      <div class="type-title">Head</div>
-      <div class="type-title">Background</div>
-      <div class="type-title">Situation</div>
-      <div class="type-title">Head</div>
-      <div class="type-title">Background</div>
-      <div class="type-title">Situation</div>
-      <div class="type-title">Head</div>
-      <div class="type-title">Background</div>
-      <div class="type-title">Situation</div>
-      <div class="type-title">Head</div>
-      <div class="type-title">Background</div>
-      <div class="type-title-actived">Situation</div>
+      {#each assetMenuList as item}
+        <div
+          class={selectedType === item.type ? 'type-title-actived' : 'type-title'}
+          on:click={() => {
+            selectedType = item.type
+          }}
+        >
+          {item.type}
+        </div>
+      {/each}
     </div>
     <div class="asset-list">
-      <div class="asset-wrap">
-        <div class="asset-frame">
-          <div class="asset-image">
-            <div class="equip-text-wrap">
-              <div class="equip-text">is Equip?</div>
+      {#each $myAssetList as item}
+        {#if item.asset_type === selectedType}
+          <div class="asset-wrap">
+            <div class="asset-frame">
+              {#if $selectedAsset[item.asset_type].id === item.id}
+                <div class="asset-image" style="cursor: auto; background-image: url({item.image});">
+                  <div class="equiped-text-wrap">
+                    <div class="equip-text">equiped</div>
+                  </div>
+                </div>
+              {:else}
+                <div
+                  class="asset-image"
+                  style="background-image: url({item.image});"
+                  on:click={() => select(item)}
+                >
+                  <div class="equip-text-wrap">
+                    <div class="equip-text">is Equip?</div>
+                  </div>
+                </div>
+              {/if}
+              <div class="asset-title">
+                {item.name.length > 30 ? item.name.substr(0, 30 - 2) + '...' : item.name}
+              </div>
+              <div class="asset-amount">x{item.balance}</div>
+              <button class="normal-button">info</button>
             </div>
           </div>
-          <div class="asset-title">Asset: asdasdasdasdasd</div>
-          <div class="asset-amount">x3</div>
-          <button class="normal-button">info</button>
-        </div>
-      </div>
-      <div class="asset-wrap">
-        <div class="asset-frame">
-          <div class="asset-image">
-            <div class="equip-text-wrap">
-              <div class="equip-text">is Equip?</div>
-            </div>
-          </div>
-          <div class="asset-title">Asset: asdasdasdasdasd</div>
-          <div class="asset-amount">x3</div>
-          <button class="normal-button">info</button>
-        </div>
-      </div>
-      <div class="asset-wrap">
-        <div class="asset-frame">
-          <div class="asset-image">
-            <div class="equip-text-wrap">
-              <div class="equip-text">is Equip?</div>
-            </div>
-          </div>
-          <div class="asset-title">Asset: asdasdasdasdasd</div>
-          <div class="asset-amount">x3</div>
-          <button class="normal-button">info</button>
-        </div>
-      </div>
-      <div class="asset-wrap">
-        <div class="asset-frame">
-          <div class="asset-image">
-            <div class="equip-text-wrap">
-              <div class="equip-text">is Equip?</div>
-            </div>
-          </div>
-          <div class="asset-title">Asset: asdasdasdasdasd</div>
-          <div class="asset-amount">x3</div>
-          <button class="normal-button">info</button>
-        </div>
-      </div>
-      <div class="asset-wrap">
-        <div class="asset-frame">
-          <div class="asset-image">
-            <div class="equip-text-wrap">
-              <div class="equip-text">is Equip?</div>
-            </div>
-          </div>
-          <div class="asset-title">Asset: asdasdasdasdasd</div>
-          <div class="asset-amount">x3</div>
-          <button class="normal-button">info</button>
-        </div>
-      </div>
+        {/if}
+      {/each}
     </div>
   </div>
 </div>
@@ -125,6 +187,10 @@
     display: none; /* Chrome, Safari, Opera*/
   }
 
+  .equip-text {
+    user-select: none;
+  }
+
   .asset-list {
     display: flex;
     width: 85%;
@@ -139,13 +205,16 @@
       display: flex;
       flex-direction: column;
       height: fit-content;
-      padding: 5px;
+      padding: 4.6px;
       box-sizing: border-box;
       .asset-frame {
         /* display: flex; */
         min-width: 20%;
         border: 1px solid $inline-color;
         box-sizing: border-box;
+        min-width: 152px;
+        min-height: 232px;
+        /* max-height: 232px; */
         .normal-button {
           padding: 4px;
           width: 100%;
@@ -156,6 +225,7 @@
         .asset-title {
           font-size: 12px;
           max-width: 150px;
+          height: 37px;
           padding: 6px;
           box-sizing: border-box;
         }
@@ -182,6 +252,18 @@
             align-items: center;
             .equip-text {
               display: none;
+            }
+          }
+          .equiped-text-wrap {
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            .equip-text {
+              display: block;
+              opacity: 1;
             }
           }
         }

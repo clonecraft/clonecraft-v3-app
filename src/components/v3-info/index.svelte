@@ -1,204 +1,254 @@
 <script lang="ts">
+  import { selectedV3, v3ImageMergeLoading } from '@/stores/index'
+  import { Circle } from 'svelte-loading-spinners'
 </script>
 
 <div class="box">
   <div class="box-title">CxNxD Omega Clone Info</div>
-  <div class="box-content">
-    <div class="box-content-images">
-      <div class="image-title">CxNxD Omega #2022</div>
-      <div class="clone-wrap">
-        <div class="v3-image" />
-        <div class="grade">
-          <div class="grade-text">9</div>
-          <div class="grade-title">Grade</div>
+  {#if $selectedV3.id !== null}
+    <div class="box-content">
+      <div class="box-content-images">
+        <div class="image-title">{$selectedV3.name}</div>
+        <div class="clone-wrap">
+          <div class="v3-image" style="background-image: url({$selectedV3.image});">
+            {#if $v3ImageMergeLoading}
+              <div class="loading">
+                <Circle size="60" color="#ffffff" unit="px" duration="1s" />
+              </div>
+            {/if}
+          </div>
+          <div class="grade">
+            <div class="grade-text">{$selectedV3.grade}</div>
+            <div class="grade-title">Grade</div>
+          </div>
+        </div>
+        <div class="asset-images">
+          <div class="asset-image" style="background-image: url({$selectedV3.background.image});" />
+          <div class="asset-image" style="background-image: url({$selectedV3.situation.image});" />
+          <div class="asset-image" style="background-image: url({$selectedV3.weapon.image});" />
+          <div class="asset-image" style="background-image: url({$selectedV3.body.image});" />
+          <div class="asset-image" style="background-image: url({$selectedV3.tattoo.image});" />
+          <div class="asset-image" style="background-image: url({$selectedV3.mouth.image});" />
+          <div class="asset-image" style="background-image: url({$selectedV3.eyes.image});" />
+          <div class="asset-image" style="background-image: url({$selectedV3.clothes.image});" />
+          <div class="asset-image" style="background-image: url({$selectedV3.hat.image});" />
+          <div class="asset-image" style="background-image: url({$selectedV3.accessory.image});" />
+          <div class="asset-image" style="background-image: url({$selectedV3.mask.image});" />
+          <div class="asset-image" style="background-image: url({$selectedV3.effect.image});" />
         </div>
       </div>
-      <div class="asset-images">
-        <div class="asset-image" style="background-image: url('/images/asset-sample.png');" />
-        <div class="asset-image" />
-        <div class="asset-image" />
-        <div class="asset-image" />
-        <div class="asset-image" />
-        <div class="asset-image" />
-        <div class="asset-image" />
-        <div class="asset-image" />
-        <div class="asset-image" />
-        <div class="asset-image" />
-        <div class="asset-image" />
-        <div class="asset-image" style="background-image: url('/images/asset-sample.png');">
-          <!-- <div class="asset-plus">+</div> -->
-          <!-- <img src="/images/asset-sample.png" alt="img" /> -->
+      <div class="box-content-status">
+        <div class="box-content-title">type</div>
+        <div class="type-item">
+          <div class="type-title">{$selectedV3.type.name}</div>
+        </div>
+        <div class="line" />
+        <div class="box-content-title">power level</div>
+        <div class="type-item">
+          <div class="type-title">{$selectedV3.power_level}</div>
+        </div>
+        <div class="line" />
+        <div class="box-content-title">status</div>
+        <div class="status-item">
+          <div class="status-title">attack</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">{$selectedV3.attack}</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div
+                class="status-graph-amount"
+                style="width: {($selectedV3.attack / 12000) * 100}%;"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">defense</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">{$selectedV3.defense}</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div
+                class="status-graph-amount"
+                style="width: {($selectedV3.defense / 12000) * 100}%;"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">luck</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">{$selectedV3.luck}</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div
+                class="status-graph-amount"
+                style="width: {($selectedV3.luck / 12000) * 100}%;"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">speed</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">{$selectedV3.speed}</div>
+              <div class="status-amount">60</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: {($selectedV3.speed / 60) * 100}%;" />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">evade</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">{$selectedV3.evade}</div>
+              <div class="status-amount">100</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: {($selectedV3.evade / 100) * 100}%;" />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">hitrate</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">{$selectedV3.hitrate}</div>
+              <div class="status-amount">100</div>
+            </div>
+            <div class="status-graph">
+              <div
+                class="status-graph-amount"
+                style="width: {($selectedV3.hitrate / 100) * 100}%;"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="line" />
+        <div class="box-content-title">element</div>
+        <div class="status-item">
+          <div class="status-title">divine</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">{$selectedV3.divine}</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div
+                class="status-graph-amount"
+                style="width: {($selectedV3.divine / 12000) * 100}%;"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">diabolic</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">{$selectedV3.diabolic}</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div
+                class="status-graph-amount"
+                style="width: {($selectedV3.diabolic / 12000) * 100}%;"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">ignis</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">{$selectedV3.ignis}</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div
+                class="status-graph-amount"
+                style="width: {($selectedV3.ignis / 12000) * 100}%;"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">aqua</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">{$selectedV3.aqua}</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div
+                class="status-graph-amount"
+                style="width: {($selectedV3.aqua / 12000) * 100}%;"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">aer</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">{$selectedV3.aer}</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: {($selectedV3.aer / 12000) * 100}%;" />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">terra</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">{$selectedV3.terra}</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div
+                class="status-graph-amount"
+                style="width: {($selectedV3.terra / 12000) * 100}%;"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="line" />
+        <div class="box-content-title">skill</div>
+        <div class="skill-wrap">
+          <div class="skill" />
+          <div class="skill" />
+          <div class="skill" />
         </div>
       </div>
     </div>
-    <div class="box-content-status">
-      <div class="box-content-title">type</div>
-      <div class="type-item">
-        <div class="type-title">close-range attack</div>
-      </div>
-      <div class="line" />
-      <div class="box-content-title">status</div>
-      <div class="status-item">
-        <div class="status-title">attack</div>
-        <div class="status-content-wrap">
-          <div class="amount-wrap">
-            <div class="status-amount">99</div>
-            <div class="status-amount">99</div>
-          </div>
-          <div class="status-graph">
-            <div class="status-graph-amount" style="width: {30}%;" />
-          </div>
-        </div>
-      </div>
-      <div class="status-item">
-        <div class="status-title">defense</div>
-        <div class="status-content-wrap">
-          <div class="amount-wrap">
-            <div class="status-amount">99</div>
-            <div class="status-amount">99</div>
-          </div>
-          <div class="status-graph">
-            <div class="status-graph-amount" style="width: {30}%;" />
-          </div>
-        </div>
-      </div>
-      <div class="status-item">
-        <div class="status-title">luck</div>
-        <div class="status-content-wrap">
-          <div class="amount-wrap">
-            <div class="status-amount">99</div>
-            <div class="status-amount">99</div>
-          </div>
-          <div class="status-graph">
-            <div class="status-graph-amount" style="width: {30}%;" />
-          </div>
-        </div>
-      </div>
-      <div class="status-item">
-        <div class="status-title">speed</div>
-        <div class="status-content-wrap">
-          <div class="amount-wrap">
-            <div class="status-amount">99</div>
-            <div class="status-amount">99</div>
-          </div>
-          <div class="status-graph">
-            <div class="status-graph-amount" style="width: {30}%;" />
-          </div>
-        </div>
-      </div>
-      <div class="status-item">
-        <div class="status-title">evade</div>
-        <div class="status-content-wrap">
-          <div class="amount-wrap">
-            <div class="status-amount">99</div>
-            <div class="status-amount">99</div>
-          </div>
-          <div class="status-graph">
-            <div class="status-graph-amount" style="width: {30}%;" />
-          </div>
-        </div>
-      </div>
-      <div class="status-item">
-        <div class="status-title">hitrate</div>
-        <div class="status-content-wrap">
-          <div class="amount-wrap">
-            <div class="status-amount">99</div>
-            <div class="status-amount">99</div>
-          </div>
-          <div class="status-graph">
-            <div class="status-graph-amount" style="width: {30}%;" />
-          </div>
-        </div>
-      </div>
-      <div class="line" />
-      <div class="box-content-title">element</div>
-      <div class="status-item">
-        <div class="status-title">divine</div>
-        <div class="status-content-wrap">
-          <div class="amount-wrap">
-            <div class="status-amount">99</div>
-            <div class="status-amount">99</div>
-          </div>
-          <div class="status-graph">
-            <div class="status-graph-amount" style="width: {30}%;" />
-          </div>
-        </div>
-      </div>
-      <div class="status-item">
-        <div class="status-title">diabolic</div>
-        <div class="status-content-wrap">
-          <div class="amount-wrap">
-            <div class="status-amount">99</div>
-            <div class="status-amount">99</div>
-          </div>
-          <div class="status-graph">
-            <div class="status-graph-amount" style="width: {30}%;" />
-          </div>
-        </div>
-      </div>
-      <div class="status-item">
-        <div class="status-title">ignis</div>
-        <div class="status-content-wrap">
-          <div class="amount-wrap">
-            <div class="status-amount">99</div>
-            <div class="status-amount">99</div>
-          </div>
-          <div class="status-graph">
-            <div class="status-graph-amount" style="width: {30}%;" />
-          </div>
-        </div>
-      </div>
-      <div class="status-item">
-        <div class="status-title">aqua</div>
-        <div class="status-content-wrap">
-          <div class="amount-wrap">
-            <div class="status-amount">99</div>
-            <div class="status-amount">99</div>
-          </div>
-          <div class="status-graph">
-            <div class="status-graph-amount" style="width: {30}%;" />
-          </div>
-        </div>
-      </div>
-      <div class="status-item">
-        <div class="status-title">aura</div>
-        <div class="status-content-wrap">
-          <div class="amount-wrap">
-            <div class="status-amount">99</div>
-            <div class="status-amount">99</div>
-          </div>
-          <div class="status-graph">
-            <div class="status-graph-amount" style="width: {30}%;" />
-          </div>
-        </div>
-      </div>
-      <div class="status-item">
-        <div class="status-title">terra</div>
-        <div class="status-content-wrap">
-          <div class="amount-wrap">
-            <div class="status-amount">99</div>
-            <div class="status-amount">99</div>
-          </div>
-          <div class="status-graph">
-            <div class="status-graph-amount" style="width: {30}%;" />
-          </div>
-        </div>
-      </div>
-      <div class="line" />
-      <div class="box-content-title">skill</div>
-      <div class="skill-wrap">
-        <div class="skill" />
-        <div class="skill" />
-        <div class="skill" />
-      </div>
+    <div class="button-wrap">
+      <div class="normal-button">Equip</div>
     </div>
-  </div>
-  <div class="button-wrap">
-    <div class="normal-button">Equip</div>
-  </div>
+  {:else}
+    <div class="box-content" style="min-height: 554.976px;" />
+  {/if}
 </div>
 
 <style lang="scss">
+  .loading {
+    width: 188px;
+    height: 188px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100000;
+  }
   .button-wrap {
     .normal-button {
       border: none;
@@ -244,16 +294,14 @@
       height: 188px;
       border: 1px solid $inline-color;
       box-sizing: border-box;
-      background-image: url('/images/clone-sample.jpg');
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      /* img {
-        border: 1px solid $inline-color;
-        box-sizing: border-box;
-        width: 100%;
-      } */
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+
     .asset-images {
       display: flex;
       justify-content: center;
@@ -270,23 +318,9 @@
         width: 94px;
         height: 94px;
         background-color: #161514;
-        /* background-image: url('/images/asset-sample.png'); */
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        /* .asset-plus {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 60px;
-          color: $outline-color;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-        } */
       }
     }
   }
