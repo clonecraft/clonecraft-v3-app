@@ -19,9 +19,13 @@
       name: 'Amber',
       link: '/amber',
     },
+    // {
+    //   name: 'Nectar',
+    //   link: '/nectar',
+    // },
     {
-      name: 'Nectar',
-      link: '/nectar',
+      name: 'Pax swap to Nectar',
+      link: '/pax',
     },
   ]
 </script>
