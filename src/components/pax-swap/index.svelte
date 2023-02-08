@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { PaxSwapCA } from '@/blockchain/chain/address'
+  import { paxSwapCA } from '@/blockchain/chain/address'
   import { balanceOfPax, approvePax } from '@/blockchain/contracts/Pax'
   import { balanceOfNectar } from '@/blockchain/contracts/Nectar'
   import { swap } from '@/blockchain/contracts/PaxSwap'
@@ -23,7 +23,7 @@
 
   async function paxswap() {
     const amount = ethers.utils.parseEther(swapAmount)
-    await approvePax(PaxSwapCA, amount)
+    await approvePax(paxSwapCA, amount)
     await swap(amount)
     swapAmount = ''
     myPaxBalance = ethers.utils.formatEther(await balanceOfPax())

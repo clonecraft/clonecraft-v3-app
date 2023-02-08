@@ -4,6 +4,12 @@ export const isConnect: any = writable(false)
 export const myAddress: any = writable(null)
 export const myShortAddress: any = writable(null)
 
+// my crypto balance
+export const myKlayBalance: any = writable('')
+export const myAmberBalance: any = writable('')
+export const myNectarBalance: any = writable('')
+export const myMixBalance: any = writable('')
+
 // my nft list
 export const myV3List: any = writable([])
 export const myAssetList: any = writable([])

@@ -10,6 +10,11 @@ const connect = () => {
   caver = window.caver
 }
 
+const balanceOfKlay = async () => {
+  const balance = await caver.klay.getBalance(klaytn.selectedAddress)
+  return balance
+}
+
 export {
-  klaytn, caver, connect
+  klaytn, caver, connect, balanceOfKlay
 }

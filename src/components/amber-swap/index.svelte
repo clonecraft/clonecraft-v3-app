@@ -14,16 +14,16 @@
     <div class="box-sub-wrap">
       <div class="form-wrap">
         <div class="token-name">Nectar</div>
-        <input type="text" placeholder="Mint Amount" />
+        <input type="text" placeholder="Amount" />
       </div>
       <div class="form-wrap">
         <div class="token-name">Mix</div>
-        <input type="text" placeholder="Mint Amount" />
+        <input type="text" placeholder="Amount" />
       </div>
       <div class="line" />
       <div class="form-wrap">
         <div class="token-name">Estimated Amber</div>
-        <input type="text" placeholder="Mint Amount" />
+        <input type="text" placeholder="Amount" />
       </div>
     </div>
     <div class="button-wrap">

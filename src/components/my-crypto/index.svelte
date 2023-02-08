@@ -1,13 +1,29 @@
 <script lang="ts">
+  import { ethers } from 'ethers'
+  import { onMount } from 'svelte'
+  import { balanceOfKlay } from '@/blockchain/chain/klaytn'
+  import { balanceOfAmber } from '@/blockchain/contracts/Amber'
+  import { balanceOfNectar } from '@/blockchain/contracts/Nectar'
+  import { balanceOfMix } from '@/blockchain/contracts/Mix'
+  import { myKlayBalance, myAmberBalance, myNectarBalance, myMixBalance } from '@/stores/index'
+
+  onMount(async () => {
+    if (window.klaytn !== undefined && window.klaytn._kaikas.isEnabled()) {
+      $myKlayBalance = ethers.utils.formatEther(await balanceOfKlay())
+      $myAmberBalance = ethers.utils.formatEther(await balanceOfAmber())
+      $myNectarBalance = ethers.utils.formatEther(await balanceOfNectar())
+      $myMixBalance = ethers.utils.formatEther(await balanceOfMix())
+    }
+  })
 </script>
 
 <div class="box">
   <div class="box-title">My crypto</div>
   <div class="box-content">
-    <div class="box-sub-text">My Klay : 2020.0111</div>
-    <div class="box-sub-text">My Amber : 100.1231</div>
-    <div class="box-sub-text">My Nectar : 100,000</div>
-    <div class="box-sub-text">My Mix : 100.0123</div>
+    <div class="box-sub-text">My Klay : {$myKlayBalance}</div>
+    <div class="box-sub-text">My Amber : {$myAmberBalance}</div>
+    <div class="box-sub-text">My Nectar : {$myNectarBalance}</div>
+    <div class="box-sub-text">My Mix : {$myMixBalance}</div>
   </div>
 </div>
 
