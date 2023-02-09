@@ -8,4 +8,10 @@ async function balanceOfMix() {
   return balance
 }
 
-export { balanceOfMix }
+async function approveMix(spender: any, amount: any) {
+  const contract = new caver.klay.Contract(ERC20ABI, mixCA)
+  const tx = contract.methods.approve(spender, amount).send({ from: klaytn.selectedAddress, gas: '210000' })
+  return tx
+}
+
+export { balanceOfMix, approveMix }

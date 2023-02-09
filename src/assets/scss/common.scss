@@ -1,5 +1,11 @@
 @import "./variables.scss";
 
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
 html body {
   font-family: 'Trajan Pro Regular';
 }
@@ -70,6 +76,18 @@ html body {
 
 .normal-button:active {
   background-color: $active-color;
+}
+
+.normal-button-actived {
+  border: 1px solid $inline-color;
+  padding: 10px 25px;
+  color: $text-color;
+  background-color: $active-color;
+  font-family: 'Trajan Pro Regular';
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .space {

@@ -94,11 +94,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    .token-name {
-      font-size: 18px;
-      width: auto;
-      padding: 10px;
-    }
     input {
       width: 100%;
       padding: 10px;

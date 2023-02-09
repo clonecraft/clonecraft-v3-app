@@ -8,4 +8,10 @@ async function balanceOfNectar() {
   return balance
 }
 
-export { balanceOfNectar }
+async function approveNectar(spender: any, amount: any) {
+  const contract = new caver.klay.Contract(ERC20ABI, nectarCA)
+  const tx = contract.methods.approve(spender, amount).send({ from: klaytn.selectedAddress, gas: '210000' })
+  return tx
+}
+
+export { balanceOfNectar, approveNectar }
