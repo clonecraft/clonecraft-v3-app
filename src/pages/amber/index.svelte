@@ -3,9 +3,9 @@
   import MyCrypto from '@/components/my-crypto/index.svelte'
   import AmberSwap from '@/components/amber-swap/index.svelte'
 
-  const content = `CxNxD Omega는 Nectar War 게임에 사용되는 NFT입니다. 민팅 가격은 1개에 2 klay 입니다.
-하루에 총 1000개 민팅이 가능하며 지갑당 하루에 9개 민팅 가능합니다. CxNxD Omega는 민팅시 스킬을 랜덤으로 부여받습니다.
-또한 CxNxD Asset NFT를 활용하여 CxNxD Omega의 의상을 바꿀 수 있습니다.`
+  const content = `Amber는 Nectar와 Mix 토큰의 가치를 1:1로 묶어서 발행하는 토큰입니다. Nectar와 Mix는 클레이스왑 거래소에 있는 
+Nectar-Mix 풀에 예치됩니다. Amber 토큰만 있으면 언제든지 다시 Nectar와 Mix 토큰으로 교환할 수 있습니다.
+Amber 토큰은 향후 V3 클론에 장착할 수 있는 에셋 NFT 장착과 클론크래프트에서 사용됩니다.`
 </script>
 
 <div class="wrap">
