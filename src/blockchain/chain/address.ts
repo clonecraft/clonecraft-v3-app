@@ -1,6 +1,6 @@
 const kpaxCA = '0x95f04d09A8DC87EDCF1Ba6FeD443993FA2466465'
 const nectarCA = '0x39076d7a914017e04f6c0f67d88f4162625e8d1d'
-const paxSwapCA = ''
+const paxSwapCA = '0xd4e99f69C84916021e6017bFd3504153A36A7a11'
 const mixCA = '0xdd483a970a7a7fef2b223c3510fac852799a88bf'
 const amberCA = '0x3bd0911e1c71f817f402b904b2fccc4e33b6db44'
 const omegaCA = ''
