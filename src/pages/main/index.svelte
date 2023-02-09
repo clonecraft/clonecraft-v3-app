@@ -7,18 +7,20 @@
   }
 
   const menuData: Array<MenuInfo> = [
-    {
-      name: 'Omega Mint',
-      link: '/omega-mint',
-    },
-    {
-      name: 'Omega Equip',
-      link: '/equip',
-    },
+    // 개발중
+    // {
+    //   name: 'Omega Mint',
+    //   link: '/omega-mint',
+    // },
+    // {
+    //   name: 'Omega Equip',
+    //   link: '/equip',
+    // },
     {
       name: 'Amber',
       link: '/amber',
     },
+    // 삭제고려
     // {
     //   name: 'Nectar',
     //   link: '/nectar',
