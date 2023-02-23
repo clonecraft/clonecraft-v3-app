@@ -12,10 +12,10 @@
     //   name: 'Omega Mint',
     //   link: '/omega-mint',
     // },
-    // {
-    //   name: 'Omega Equip',
-    //   link: '/equip',
-    // },
+    {
+      name: 'Omega Equip',
+      link: '/equip',
+    },
     {
       name: 'Amber',
       link: '/amber',
