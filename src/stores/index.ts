@@ -16,6 +16,9 @@ export const myAssetList: any = writable([])
 
 // selected nft
 export const v3ImageMergeLoading: any = writable(false)
+export const selectedV3Original: any = writable({
+  id: null,
+})
 export const selectedV3: any = writable({
   id: null,
 })

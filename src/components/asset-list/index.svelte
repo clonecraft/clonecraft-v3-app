@@ -47,21 +47,37 @@
     if ($selectedV3.id === null) {
       alert('omega를 먼저 선택 해주세요.')
     } else {
-      $v3ImageMergeLoading = true
-      const assetObj = {
-        id: item.id,
-        name: item.name,
-        image: item.image,
-        base_image: item.base_image,
-      }
-      $selectedV3[item.asset_type] = assetObj
-      $selectedAsset[item.asset_type] = item
+      const data = { ...item }
+      $selectedV3.power_level = $selectedV3.power_level - $selectedV3[item.asset_type].power_level + data.power_level
+      $selectedV3.attack = $selectedV3.attack - $selectedV3[item.asset_type].attack + data.attack
+      $selectedV3.defense = $selectedV3.defense - $selectedV3[item.asset_type].defense + data.defense
+      $selectedV3.hp = $selectedV3.hp - $selectedV3[item.asset_type].hp + data.hp
+      $selectedV3.luck = $selectedV3.luck - $selectedV3[item.asset_type].luck + data.luck
+      $selectedV3.speed = $selectedV3.speed - $selectedV3[item.asset_type].speed + data.speed
+      $selectedV3.evade = $selectedV3.evade - $selectedV3[item.asset_type].evade + data.evade
+      $selectedV3.hitrate = $selectedV3.hitrate - $selectedV3[item.asset_type].hitrate + data.hitrate
+      $selectedV3.divine = $selectedV3.divine - $selectedV3[item.asset_type].divine + data.divine
+      $selectedV3.diabolic = $selectedV3.diabolic - $selectedV3[item.asset_type].diabolic + data.diabolic
+      $selectedV3.ignis = $selectedV3.ignis - $selectedV3[item.asset_type].ignis + data.ignis
+      $selectedV3.aqua = $selectedV3.aqua - $selectedV3[item.asset_type].aqua + data.aqua
+      $selectedV3.aer = $selectedV3.aer - $selectedV3[item.asset_type].aer + data.aer
+      $selectedV3.terra = $selectedV3.terra - $selectedV3[item.asset_type].terra + data.terra
+      // const assetObj = {
+      //   id: item.id,
+      //   name: item.name,
+      //   image: item.image,
+      //   base_image: item.base_image,
+      //   thumbnail_image: item.thumbnail_image,
+      //   thumbnail_base_image: item.thumbnail_base_image,
+      // }
+      $selectedV3[item.asset_type] = data
+      $selectedAsset[item.asset_type] = data
 
-      const assetList = assetImageList()
-      const baseImageList: Array<object> = assetBaseImageList(assetList)
-      const mergedImage = await merge(baseImageList)
-      $selectedV3.image = mergedImage
-      $v3ImageMergeLoading = false
+      // const assetList = assetImageList()
+      // const baseImageList: Array<object> = assetBaseImageList(assetList)
+      // const mergedImage = await merge(baseImageList)
+      // $selectedV3.image = mergedImage
+      // $v3ImageMergeLoading = false
     }
   }
 
@@ -116,7 +132,10 @@
           <div class="asset-wrap">
             <div class="asset-frame">
               {#if $selectedAsset[item.asset_type].id === item.id}
-                <div class="asset-image" style="cursor: auto; background-image: url({item.image});">
+                <div
+                  class="asset-image"
+                  style="cursor: auto; background-image: url({item.thumbnail_image});"
+                >
                   <div class="equiped-text-wrap">
                     <div class="equip-text">equiped</div>
                   </div>
@@ -124,7 +143,7 @@
               {:else}
                 <div
                   class="asset-image"
-                  style="background-image: url({item.image});"
+                  style="background-image: url({item.thumbnail_image});"
                   on:click={() => select(item)}
                 >
                   <div class="equip-text-wrap">

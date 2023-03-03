@@ -1,8 +1,5 @@
 <script lang="ts">
-  import { selectedAsset, selectedV3, v3ImageMergeLoading } from '@/stores/index'
-  import { Circle } from 'svelte-loading-spinners'
-
-  import TransparentModal from '@/components/modal/transparent.svelte'
+  import { selectedAsset, selectedV3, selectedV3Original } from '@/stores/index'
   import { onMount } from 'svelte'
 
   onMount(() => {
@@ -48,9 +45,15 @@
       },
     }
   })
-</script>
 
-<TransparentModal modalState={$v3ImageMergeLoading} />
+  function numberCheck(num: number) {
+    if (num >= 0) {
+      return `+${num}`
+    } else {
+      return num
+    }
+  }
+</script>
 
 <div class="box">
   <div class="box-title">CxNxD Omega Clone Info</div>
@@ -59,42 +62,89 @@
       <div class="box-content-images">
         <div class="image-title">{$selectedV3.name}</div>
         <div class="clone-wrap">
-          <div class="v3-image" style="background-image: url({$selectedV3.image});">
-            {#if $v3ImageMergeLoading}
-              <div class="loading">
-                <Circle size="60" color="#ffffff" unit="px" duration="1s" />
-              </div>
-            {/if}
+          <!-- <div class="v3-image" style="background-image: url({$selectedV3.image});"> -->
+          <div class="v3-image">
+            <img src={$selectedV3.background.thumbnail_base_image} alt="background" />
+            <img src={$selectedV3.situation.thumbnail_base_image} alt="situation" />
+            <img src={$selectedV3.weapon.thumbnail_base_image} alt="weapon" />
+            <img src={$selectedV3.body.thumbnail_base_image} alt="body" />
+            <img src={$selectedV3.tattoo.thumbnail_base_image} alt="tattoo" />
+            <img src={$selectedV3.mouth.thumbnail_base_image} alt="mouth" />
+            <img src={$selectedV3.eyes.thumbnail_base_image} alt="eyes" />
+            <img src={$selectedV3.clothes.thumbnail_base_image} alt="clothes" />
+            <img src={$selectedV3.hat.thumbnail_base_image} alt="hat" />
+            <img src={$selectedV3.accessory.thumbnail_base_image} alt="accessory" />
+            <img src={$selectedV3.mask.thumbnail_base_image} alt="mask" />
+            <img src={$selectedV3.effect.thumbnail_base_image} alt="effect" />
           </div>
           <div class="grade">
-            <div class="grade-text">{$selectedV3.grade}</div>
-            <div class="grade-title">Grade</div>
+            <div class="grade-text">{$selectedV3.level}</div>
+            <div class="grade-title">Level</div>
           </div>
         </div>
         <div class="asset-images">
-          <div class="asset-image" style="background-image: url({$selectedV3.background.image});" />
-          <div class="asset-image" style="background-image: url({$selectedV3.situation.image});" />
-          <div class="asset-image" style="background-image: url({$selectedV3.weapon.image});" />
-          <div class="asset-image" style="background-image: url({$selectedV3.body.image});" />
-          <div class="asset-image" style="background-image: url({$selectedV3.tattoo.image});" />
-          <div class="asset-image" style="background-image: url({$selectedV3.mouth.image});" />
-          <div class="asset-image" style="background-image: url({$selectedV3.eyes.image});" />
-          <div class="asset-image" style="background-image: url({$selectedV3.clothes.image});" />
-          <div class="asset-image" style="background-image: url({$selectedV3.hat.image});" />
-          <div class="asset-image" style="background-image: url({$selectedV3.accessory.image});" />
-          <div class="asset-image" style="background-image: url({$selectedV3.mask.image});" />
-          <div class="asset-image" style="background-image: url({$selectedV3.effect.image});" />
+          <div
+            class="asset-image"
+            style="background-image: url({$selectedV3.background.thumbnail_image});"
+          />
+          <div
+            class="asset-image"
+            style="background-image: url({$selectedV3.situation.thumbnail_image});"
+          />
+          <div
+            class="asset-image"
+            style="background-image: url({$selectedV3.weapon.thumbnail_image});"
+          />
+          <div
+            class="asset-image"
+            style="background-image: url({$selectedV3.body.thumbnail_image});"
+          />
+          <div
+            class="asset-image"
+            style="background-image: url({$selectedV3.tattoo.thumbnail_image});"
+          />
+          <div
+            class="asset-image"
+            style="background-image: url({$selectedV3.mouth.thumbnail_image});"
+          />
+          <div
+            class="asset-image"
+            style="background-image: url({$selectedV3.eyes.thumbnail_image});"
+          />
+          <div
+            class="asset-image"
+            style="background-image: url({$selectedV3.clothes.thumbnail_image});"
+          />
+          <div
+            class="asset-image"
+            style="background-image: url({$selectedV3.hat.thumbnail_image});"
+          />
+          <div
+            class="asset-image"
+            style="background-image: url({$selectedV3.accessory.thumbnail_image});"
+          />
+          <div
+            class="asset-image"
+            style="background-image: url({$selectedV3.mask.thumbnail_image});"
+          />
+          <div
+            class="asset-image"
+            style="background-image: url({$selectedV3.effect.thumbnail_image});"
+          />
         </div>
       </div>
       <div class="box-content-status">
-        <div class="box-content-title">type</div>
+        <!-- <div class="box-content-title">type</div>
         <div class="type-item">
-          <div class="type-title">{$selectedV3.type.name}</div>
+          <div class="type-title">Non type</div>
         </div>
-        <div class="line" />
+        <div class="line" /> -->
         <div class="box-content-title">power level</div>
         <div class="type-item">
-          <div class="type-title">{$selectedV3.power_level}</div>
+          <div class="type-title">
+            {$selectedV3.power_level} ({$selectedV3Original.power_level}
+            {numberCheck($selectedV3.power_level - $selectedV3Original.power_level)})
+          </div>
         </div>
         <div class="line" />
         <div class="box-content-title">status</div>
@@ -102,7 +152,11 @@
           <div class="status-title">attack</div>
           <div class="status-content-wrap">
             <div class="amount-wrap">
-              <div class="status-amount">{$selectedV3.attack}</div>
+              <div class="status-amount">
+                {$selectedV3.attack} ({$selectedV3Original.attack}
+                {numberCheck($selectedV3.attack - $selectedV3Original.attack)})
+                <div class="status-amount" />
+              </div>
               <div class="status-amount">12000</div>
             </div>
             <div class="status-graph">
@@ -117,7 +171,10 @@
           <div class="status-title">defense</div>
           <div class="status-content-wrap">
             <div class="amount-wrap">
-              <div class="status-amount">{$selectedV3.defense}</div>
+              <div class="status-amount">
+                {$selectedV3.defense} ({$selectedV3Original.defense}
+                {numberCheck($selectedV3.defense - $selectedV3Original.defense)})
+              </div>
               <div class="status-amount">12000</div>
             </div>
             <div class="status-graph">
@@ -129,10 +186,28 @@
           </div>
         </div>
         <div class="status-item">
+          <div class="status-title">health</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">
+                {$selectedV3.hp} ({$selectedV3Original.hp}
+                {numberCheck($selectedV3.hp - $selectedV3Original.hp)})
+              </div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: {($selectedV3.hp / 12000) * 100}%;" />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
           <div class="status-title">luck</div>
           <div class="status-content-wrap">
             <div class="amount-wrap">
-              <div class="status-amount">{$selectedV3.luck}</div>
+              <div class="status-amount">
+                {$selectedV3.luck} ({$selectedV3Original.luck}
+                {numberCheck($selectedV3.luck - $selectedV3Original.luck)})
+              </div>
               <div class="status-amount">12000</div>
             </div>
             <div class="status-graph">
@@ -147,7 +222,10 @@
           <div class="status-title">speed</div>
           <div class="status-content-wrap">
             <div class="amount-wrap">
-              <div class="status-amount">{$selectedV3.speed}</div>
+              <div class="status-amount">
+                {$selectedV3.speed} ({$selectedV3Original.speed}
+                {numberCheck($selectedV3.speed - $selectedV3Original.speed)})
+              </div>
               <div class="status-amount">60</div>
             </div>
             <div class="status-graph">
@@ -159,7 +237,10 @@
           <div class="status-title">evade</div>
           <div class="status-content-wrap">
             <div class="amount-wrap">
-              <div class="status-amount">{$selectedV3.evade}</div>
+              <div class="status-amount">
+                {$selectedV3.evade} ({$selectedV3Original.evade}
+                {numberCheck($selectedV3.evade - $selectedV3Original.evade)})
+              </div>
               <div class="status-amount">100</div>
             </div>
             <div class="status-graph">
@@ -171,7 +252,10 @@
           <div class="status-title">hitrate</div>
           <div class="status-content-wrap">
             <div class="amount-wrap">
-              <div class="status-amount">{$selectedV3.hitrate}</div>
+              <div class="status-amount">
+                {$selectedV3.hitrate} ({$selectedV3Original.hitrate}
+                {numberCheck($selectedV3.hitrate - $selectedV3Original.hitrate)})
+              </div>
               <div class="status-amount">100</div>
             </div>
             <div class="status-graph">
@@ -188,7 +272,10 @@
           <div class="status-title">divine</div>
           <div class="status-content-wrap">
             <div class="amount-wrap">
-              <div class="status-amount">{$selectedV3.divine}</div>
+              <div class="status-amount">
+                {$selectedV3.divine} ({$selectedV3Original.divine}
+                {numberCheck($selectedV3.divine - $selectedV3Original.divine)})
+              </div>
               <div class="status-amount">12000</div>
             </div>
             <div class="status-graph">
@@ -203,7 +290,10 @@
           <div class="status-title">diabolic</div>
           <div class="status-content-wrap">
             <div class="amount-wrap">
-              <div class="status-amount">{$selectedV3.diabolic}</div>
+              <div class="status-amount">
+                {$selectedV3.diabolic} ({$selectedV3Original.diabolic}
+                {numberCheck($selectedV3.diabolic - $selectedV3Original.diabolic)})
+              </div>
               <div class="status-amount">12000</div>
             </div>
             <div class="status-graph">
@@ -218,7 +308,10 @@
           <div class="status-title">ignis</div>
           <div class="status-content-wrap">
             <div class="amount-wrap">
-              <div class="status-amount">{$selectedV3.ignis}</div>
+              <div class="status-amount">
+                {$selectedV3.ignis} ({$selectedV3Original.ignis}
+                {numberCheck($selectedV3.ignis - $selectedV3Original.ignis)})
+              </div>
               <div class="status-amount">12000</div>
             </div>
             <div class="status-graph">
@@ -233,7 +326,10 @@
           <div class="status-title">aqua</div>
           <div class="status-content-wrap">
             <div class="amount-wrap">
-              <div class="status-amount">{$selectedV3.aqua}</div>
+              <div class="status-amount">
+                {$selectedV3.aqua} ({$selectedV3Original.aqua}
+                {numberCheck($selectedV3.aqua - $selectedV3Original.aqua)})
+              </div>
               <div class="status-amount">12000</div>
             </div>
             <div class="status-graph">
@@ -248,7 +344,10 @@
           <div class="status-title">aer</div>
           <div class="status-content-wrap">
             <div class="amount-wrap">
-              <div class="status-amount">{$selectedV3.aer}</div>
+              <div class="status-amount">
+                {$selectedV3.aer} ({$selectedV3Original.aer}
+                {numberCheck($selectedV3.aer - $selectedV3Original.aer)})
+              </div>
               <div class="status-amount">12000</div>
             </div>
             <div class="status-graph">
@@ -260,7 +359,10 @@
           <div class="status-title">terra</div>
           <div class="status-content-wrap">
             <div class="amount-wrap">
-              <div class="status-amount">{$selectedV3.terra}</div>
+              <div class="status-amount">
+                {$selectedV3.terra} ({$selectedV3Original.terra}
+                {numberCheck($selectedV3.terra - $selectedV3Original.terra)})
+              </div>
               <div class="status-amount">12000</div>
             </div>
             <div class="status-graph">
@@ -349,6 +451,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      img {
+        position: absolute;
+        width: 188px;
+        height: 188px;
+        object-fit: cover;
+      }
     }
 
     .asset-images {
@@ -425,6 +533,13 @@
         .amount-wrap {
           display: flex;
           justify-content: space-between;
+          .amount-calc-wrap {
+            display: flex;
+            .status-amount {
+              font-size: 12px;
+              margin-right: 5px;
+            }
+          }
           .status-amount {
             font-size: 12px;
           }

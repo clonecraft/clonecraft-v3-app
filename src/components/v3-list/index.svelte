@@ -1,9 +1,12 @@
 <script lang="ts">
   import { isConnect, myV3List, selectedAsset } from '@/stores/index'
-  import { selectedV3 } from '@/stores/index'
+  import { selectedV3, selectedV3Original } from '@/stores/index'
+  import { METADATA_API_BASE_URI } from '@/constants/index'
 
-  function select(item: any) {
-    $selectedV3 = { ...item }
+  async function select(id: any) {
+    const data = await (await fetch(`${METADATA_API_BASE_URI}/v3/metadata/${id}`)).json()
+    $selectedV3 = { ...data }
+    $selectedV3Original = { ...data }
     $selectedAsset = {
       background: {
         id: null,
@@ -62,7 +65,7 @@
               <div
                 class="omega-image"
                 style="background-image: url({item.image});"
-                on:click={() => select(item)}
+                on:click={() => select(item.id)}
               >
                 <div class="equip-text-wrap">
                   <div class="equip-text">is Select?</div>

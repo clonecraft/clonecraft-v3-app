@@ -1,0 +1,5 @@
+const METADATA_API_BASE_URI = 'http://192.168.0.23:3000';
+
+export {
+  METADATA_API_BASE_URI,
+}
