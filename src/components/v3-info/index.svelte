@@ -267,7 +267,7 @@
           </div>
         </div>
         <div class="line" />
-        <div class="box-content-title">element</div>
+        <div class="box-content-title">elements</div>
         <div class="status-item">
           <div class="status-title">divine</div>
           <div class="status-content-wrap">
@@ -374,7 +374,7 @@
           </div>
         </div>
         <div class="line" />
-        <div class="box-content-title">skill</div>
+        <div class="box-content-title">skills</div>
         <div class="skill-wrap">
           <div class="skill" />
           <div class="skill" />
@@ -533,13 +533,6 @@
         .amount-wrap {
           display: flex;
           justify-content: space-between;
-          .amount-calc-wrap {
-            display: flex;
-            .status-amount {
-              font-size: 12px;
-              margin-right: 5px;
-            }
-          }
           .status-amount {
             font-size: 12px;
           }
