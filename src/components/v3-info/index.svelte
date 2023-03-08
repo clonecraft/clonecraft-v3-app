@@ -382,12 +382,213 @@
         </div>
       </div>
     </div>
-    <div class="button-wrap">
-      <div class="normal-button">Equip</div>
-    </div>
   {:else}
-    <div class="box-content" style="min-height: 554.976px;" />
+    <!-- <div class="box-content" style="min-height: 554.976px;" /> -->
+    <div class="box-content">
+      <div class="box-content-images">
+        <div class="image-title">CxNxD Omega</div>
+        <div class="clone-wrap">
+          <div class="v3-image">
+            <div class="sample" />
+          </div>
+          <div class="grade">
+            <div class="grade-text">0</div>
+            <div class="grade-title">Level</div>
+          </div>
+        </div>
+        <div class="asset-images">
+          <div class="asset-image" />
+          <div class="asset-image" />
+          <div class="asset-image" />
+          <div class="asset-image" />
+          <div class="asset-image" />
+          <div class="asset-image" />
+          <div class="asset-image" />
+          <div class="asset-image" />
+          <div class="asset-image" />
+          <div class="asset-image" />
+          <div class="asset-image" />
+          <div class="asset-image" />
+        </div>
+      </div>
+      <div class="box-content-status">
+        <div class="box-content-title">power level</div>
+        <div class="type-item">
+          <div class="type-title">0</div>
+        </div>
+        <div class="line" />
+        <div class="box-content-title">status</div>
+        <div class="status-item">
+          <div class="status-title">attack</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">0</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: 0%" />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">defense</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">0</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: 0%" />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">health</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">0</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: 0%" />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">luck</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">0</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: 0%" />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">speed</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">0</div>
+              <div class="status-amount">60</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: 0%" />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">evade</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">0</div>
+              <div class="status-amount">100</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: 0%" />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">hitrate</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">0</div>
+              <div class="status-amount">100</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: 0%" />
+            </div>
+          </div>
+        </div>
+        <div class="line" />
+        <div class="box-content-title">elements</div>
+        <div class="status-item">
+          <div class="status-title">divine</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">0</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: 0%" />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">diabolic</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">0</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: 0%" />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">ignis</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">0</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: 0%" />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">aqua</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">0</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: 0%" />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">aer</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">0</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: 0%" />
+            </div>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-title">terra</div>
+          <div class="status-content-wrap">
+            <div class="amount-wrap">
+              <div class="status-amount">0</div>
+              <div class="status-amount">12000</div>
+            </div>
+            <div class="status-graph">
+              <div class="status-graph-amount" style="width: 0%" />
+            </div>
+          </div>
+        </div>
+        <div class="line" />
+        <div class="box-content-title">skills</div>
+        <div class="skill-wrap">
+          <div class="skill" />
+          <div class="skill" />
+          <div class="skill" />
+        </div>
+      </div>
+    </div>
   {/if}
+  <div class="button-wrap">
+    <div class="normal-button">Equip</div>
+  </div>
 </div>
 
 <style lang="scss">
@@ -457,6 +658,11 @@
         height: 188px;
         object-fit: cover;
       }
+      .sample {
+        width: 188px;
+        height: 187px;
+        background-color: $inbox-color;
+      }
     }
 
     .asset-images {
@@ -474,7 +680,7 @@
         box-sizing: border-box;
         width: 94px;
         height: 94px;
-        background-color: #161514;
+        background-color: $inbox-color;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -543,6 +749,7 @@
           height: 15px;
           border: 1px solid $inline-color;
           box-sizing: border-box;
+          background-color: $inbox-color;
           .status-graph-amount {
             background-color: $text-color;
           }
