@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Canvas, Image } from 'canvas'
   import mergeImages from 'merge-images'
-  import { myAssetList, selectedV3, selectedAsset, v3ImageMergeLoading } from '@/stores/index'
+  import { myAssetList, selectedV3, selectedAsset, selectedV3Original } from '@/stores/index'
 
   const assetMenuList = [
     {
@@ -43,21 +43,27 @@
   ]
   let selectedType = 'background'
 
-  async function select(item: any) {
+  function unselect(item: any) {}
+
+  function select(item: any) {
     if ($selectedV3.id === null) {
       alert('omega를 먼저 선택 해주세요.')
     } else {
       const data = { ...item }
-      $selectedV3.power_level = $selectedV3.power_level - $selectedV3[item.asset_type].power_level + data.power_level
+      $selectedV3.power_level =
+        $selectedV3.power_level - $selectedV3[item.asset_type].power_level + data.power_level
       $selectedV3.attack = $selectedV3.attack - $selectedV3[item.asset_type].attack + data.attack
-      $selectedV3.defense = $selectedV3.defense - $selectedV3[item.asset_type].defense + data.defense
+      $selectedV3.defense =
+        $selectedV3.defense - $selectedV3[item.asset_type].defense + data.defense
       $selectedV3.hp = $selectedV3.hp - $selectedV3[item.asset_type].hp + data.hp
       $selectedV3.luck = $selectedV3.luck - $selectedV3[item.asset_type].luck + data.luck
       $selectedV3.speed = $selectedV3.speed - $selectedV3[item.asset_type].speed + data.speed
       $selectedV3.evade = $selectedV3.evade - $selectedV3[item.asset_type].evade + data.evade
-      $selectedV3.hitrate = $selectedV3.hitrate - $selectedV3[item.asset_type].hitrate + data.hitrate
+      $selectedV3.hitrate =
+        $selectedV3.hitrate - $selectedV3[item.asset_type].hitrate + data.hitrate
       $selectedV3.divine = $selectedV3.divine - $selectedV3[item.asset_type].divine + data.divine
-      $selectedV3.diabolic = $selectedV3.diabolic - $selectedV3[item.asset_type].diabolic + data.diabolic
+      $selectedV3.diabolic =
+        $selectedV3.diabolic - $selectedV3[item.asset_type].diabolic + data.diabolic
       $selectedV3.ignis = $selectedV3.ignis - $selectedV3[item.asset_type].ignis + data.ignis
       $selectedV3.aqua = $selectedV3.aqua - $selectedV3[item.asset_type].aqua + data.aqua
       $selectedV3.aer = $selectedV3.aer - $selectedV3[item.asset_type].aer + data.aer
@@ -136,6 +142,9 @@
                   class="asset-image"
                   style="cursor: auto; background-image: url({item.thumbnail_image});"
                 >
+                  <div class="unselect-text-wrap">
+                    <div class="unselect-text">x</div>
+                  </div>
                   <div class="equiped-text-wrap">
                     <div class="equip-text">equiped</div>
                   </div>
@@ -208,6 +217,26 @@
 
   .equip-text {
     user-select: none;
+  }
+
+  .unselect-text-wrap {
+    display: flex;
+    justify-content: flex-end;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    .unselect-text {
+      position: absolute;
+      display: block;
+      opacity: 1;
+      font-size: 20px;
+      padding: 3px;
+      cursor: pointer;
+    }
+  }
+  .unselect-text-wrap::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
   }
 
   .asset-list {

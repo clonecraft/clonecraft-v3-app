@@ -64,7 +64,55 @@
         <div class="clone-wrap">
           <!-- <div class="v3-image" style="background-image: url({$selectedV3.image});"> -->
           <div class="v3-image">
-            <img src={$selectedV3.background.thumbnail_base_image} alt="background" />
+            <div
+              class="v3-img"
+              style="background-image: url({$selectedV3.background.thumbnail_base_image});"
+            />
+            <div
+              class="v3-img"
+              style="background-image: url({$selectedV3.situation.thumbnail_base_image});"
+            />
+            <div
+              class="v3-img"
+              style="background-image: url({$selectedV3.weapon.thumbnail_base_image});"
+            />
+            <div
+              class="v3-img"
+              style="background-image: url({$selectedV3.body.thumbnail_base_image});"
+            />
+            <div
+              class="v3-img"
+              style="background-image: url({$selectedV3.tattoo.thumbnail_base_image});"
+            />
+            <div
+              class="v3-img"
+              style="background-image: url({$selectedV3.tattoo.thumbnail_base_image});"
+            />
+            <div
+              class="v3-img"
+              style="background-image: url({$selectedV3.eyes.thumbnail_base_image});"
+            />
+            <div
+              class="v3-img"
+              style="background-image: url({$selectedV3.clothes.thumbnail_base_image});"
+            />
+            <div
+              class="v3-img"
+              style="background-image: url({$selectedV3.hat.thumbnail_base_image});"
+            />
+            <div
+              class="v3-img"
+              style="background-image: url({$selectedV3.accessory.thumbnail_base_image});"
+            />
+            <div
+              class="v3-img"
+              style="background-image: url({$selectedV3.mask.thumbnail_base_image});"
+            />
+            <div
+              class="v3-img"
+              style="background-image: url({$selectedV3.effect.thumbnail_base_image});"
+            />
+            <!-- <img src={$selectedV3.background.thumbnail_base_image} alt="background" />
             <img src={$selectedV3.situation.thumbnail_base_image} alt="situation" />
             <img src={$selectedV3.weapon.thumbnail_base_image} alt="weapon" />
             <img src={$selectedV3.body.thumbnail_base_image} alt="body" />
@@ -75,7 +123,7 @@
             <img src={$selectedV3.hat.thumbnail_base_image} alt="hat" />
             <img src={$selectedV3.accessory.thumbnail_base_image} alt="accessory" />
             <img src={$selectedV3.mask.thumbnail_base_image} alt="mask" />
-            <img src={$selectedV3.effect.thumbnail_base_image} alt="effect" />
+            <img src={$selectedV3.effect.thumbnail_base_image} alt="effect" /> -->
           </div>
           <div class="grade">
             <div class="grade-text">{$selectedV3.level}</div>
@@ -652,15 +700,18 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      img {
+      .v3-img {
         position: absolute;
-        width: 188px;
-        height: 188px;
+        width: 186px;
+        height: 186px;
         object-fit: cover;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
       }
       .sample {
         width: 188px;
-        height: 187px;
+        height: 186px;
         background-color: $inbox-color;
       }
     }
