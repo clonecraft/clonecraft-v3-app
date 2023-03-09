@@ -1,25 +1,21 @@
 <script lang="ts">
-  import { balanceOfKlay } from '@/blockchain/chain/klaytn'
-  import { myKlayBalance } from '@/stores'
   import { ethers } from 'ethers'
   import { onMount } from 'svelte'
 
   onMount(async () => {
     if (window.klaytn !== undefined && window.klaytn._kaikas.isEnabled()) {
-      $myKlayBalance = ethers.utils.formatEther(await balanceOfKlay())
+      // $myKlayBalance = ethers.utils.formatEther(await balanceOfKlay())
     }
   })
 </script>
 
 <div class="box">
-  <div class="box-title">CxNxD Omega Clone Mint</div>
+  <div class="box-title">CxNxD Omega Clone Free Mint</div>
   <div class="box-content">
     <div class="box-sub-wrap">
-      <div class="box-sub-text">My Klay: {$myKlayBalance}</div>
-      <div class="box-sub-text">Today My mint available number: 9</div>
-      <input type="text" placeholder="Mint Amount" />
+      <div class="box-sub-text">Today Mining Remaining Count: 0</div>
     </div>
-    <button class="normal-button">Mint</button>
+    <button class="normal-button">Free Mint</button>
   </div>
 </div>
 

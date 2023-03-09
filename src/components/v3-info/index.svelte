@@ -86,7 +86,7 @@
             />
             <div
               class="v3-img"
-              style="background-image: url({$selectedV3.tattoo.thumbnail_base_image});"
+              style="background-image: url({$selectedV3.mouth.thumbnail_base_image});"
             />
             <div
               class="v3-img"
@@ -112,18 +112,6 @@
               class="v3-img"
               style="background-image: url({$selectedV3.effect.thumbnail_base_image});"
             />
-            <!-- <img src={$selectedV3.background.thumbnail_base_image} alt="background" />
-            <img src={$selectedV3.situation.thumbnail_base_image} alt="situation" />
-            <img src={$selectedV3.weapon.thumbnail_base_image} alt="weapon" />
-            <img src={$selectedV3.body.thumbnail_base_image} alt="body" />
-            <img src={$selectedV3.tattoo.thumbnail_base_image} alt="tattoo" />
-            <img src={$selectedV3.mouth.thumbnail_base_image} alt="mouth" />
-            <img src={$selectedV3.eyes.thumbnail_base_image} alt="eyes" />
-            <img src={$selectedV3.clothes.thumbnail_base_image} alt="clothes" />
-            <img src={$selectedV3.hat.thumbnail_base_image} alt="hat" />
-            <img src={$selectedV3.accessory.thumbnail_base_image} alt="accessory" />
-            <img src={$selectedV3.mask.thumbnail_base_image} alt="mask" />
-            <img src={$selectedV3.effect.thumbnail_base_image} alt="effect" /> -->
           </div>
           <div class="grade">
             <div class="grade-text">{$selectedV3.level}</div>
@@ -182,11 +170,6 @@
         </div>
       </div>
       <div class="box-content-status">
-        <!-- <div class="box-content-title">type</div>
-        <div class="type-item">
-          <div class="type-title">Non type</div>
-        </div>
-        <div class="line" /> -->
         <div class="box-content-title">power level</div>
         <div class="type-item">
           <div class="type-title">

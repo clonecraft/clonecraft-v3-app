@@ -43,7 +43,33 @@
   ]
   let selectedType = 'background'
 
-  function unselect(item: any) {}
+  function unselect(item: any) {
+    const data = { ...item }
+    $selectedV3.power_level =
+      $selectedV3.power_level - data.power_level + $selectedV3Original[data.asset_type].power_level
+    $selectedV3.attack =
+      $selectedV3.attack - data.attack + $selectedV3Original[data.asset_type].attack
+    $selectedV3.defense =
+      $selectedV3.defense - data.defense + $selectedV3Original[data.asset_type].defense
+    $selectedV3.hp = $selectedV3.hp - data.hp + $selectedV3Original[data.asset_type].hp
+    $selectedV3.luck = $selectedV3.luck - data.luck + $selectedV3Original[data.asset_type].luck
+    $selectedV3.speed = $selectedV3.speed - data.speed + $selectedV3Original[data.asset_type].speed
+    $selectedV3.evade = $selectedV3.evade - data.evade + $selectedV3Original[data.asset_type].evade
+    $selectedV3.hitrate =
+      $selectedV3.hitrate - data.hitrate + $selectedV3Original[data.asset_type].hitrate
+    $selectedV3.divine =
+      $selectedV3.divine - data.divine + $selectedV3Original[data.asset_type].divine
+    $selectedV3.diabolic =
+      $selectedV3.diabolic - data.diabolic + $selectedV3Original[data.asset_type].diabolic
+    $selectedV3.ignis = $selectedV3.ignis - data.ignis + $selectedV3Original[data.asset_type].ignis
+    $selectedV3.aqua = $selectedV3.aqua - data.aqua + $selectedV3Original[data.asset_type].aqua
+    $selectedV3.aer = $selectedV3.aer - data.aer + $selectedV3Original[data.asset_type].aer
+    $selectedV3.terra = $selectedV3.terra - data.terra + $selectedV3Original[data.asset_type].terra
+    $selectedV3[data.asset_type] = $selectedV3Original[data.asset_type]
+    $selectedAsset[data.asset_type] = {
+      id: null,
+    }
+  }
 
   function select(item: any) {
     if ($selectedV3.id === null) {
@@ -51,33 +77,25 @@
     } else {
       const data = { ...item }
       $selectedV3.power_level =
-        $selectedV3.power_level - $selectedV3[item.asset_type].power_level + data.power_level
-      $selectedV3.attack = $selectedV3.attack - $selectedV3[item.asset_type].attack + data.attack
+        $selectedV3.power_level - $selectedV3[data.asset_type].power_level + data.power_level
+      $selectedV3.attack = $selectedV3.attack - $selectedV3[data.asset_type].attack + data.attack
       $selectedV3.defense =
-        $selectedV3.defense - $selectedV3[item.asset_type].defense + data.defense
-      $selectedV3.hp = $selectedV3.hp - $selectedV3[item.asset_type].hp + data.hp
-      $selectedV3.luck = $selectedV3.luck - $selectedV3[item.asset_type].luck + data.luck
-      $selectedV3.speed = $selectedV3.speed - $selectedV3[item.asset_type].speed + data.speed
-      $selectedV3.evade = $selectedV3.evade - $selectedV3[item.asset_type].evade + data.evade
+        $selectedV3.defense - $selectedV3[data.asset_type].defense + data.defense
+      $selectedV3.hp = $selectedV3.hp - $selectedV3[data.asset_type].hp + data.hp
+      $selectedV3.luck = $selectedV3.luck - $selectedV3[data.asset_type].luck + data.luck
+      $selectedV3.speed = $selectedV3.speed - $selectedV3[data.asset_type].speed + data.speed
+      $selectedV3.evade = $selectedV3.evade - $selectedV3[data.asset_type].evade + data.evade
       $selectedV3.hitrate =
-        $selectedV3.hitrate - $selectedV3[item.asset_type].hitrate + data.hitrate
-      $selectedV3.divine = $selectedV3.divine - $selectedV3[item.asset_type].divine + data.divine
+        $selectedV3.hitrate - $selectedV3[data.asset_type].hitrate + data.hitrate
+      $selectedV3.divine = $selectedV3.divine - $selectedV3[data.asset_type].divine + data.divine
       $selectedV3.diabolic =
-        $selectedV3.diabolic - $selectedV3[item.asset_type].diabolic + data.diabolic
-      $selectedV3.ignis = $selectedV3.ignis - $selectedV3[item.asset_type].ignis + data.ignis
-      $selectedV3.aqua = $selectedV3.aqua - $selectedV3[item.asset_type].aqua + data.aqua
-      $selectedV3.aer = $selectedV3.aer - $selectedV3[item.asset_type].aer + data.aer
-      $selectedV3.terra = $selectedV3.terra - $selectedV3[item.asset_type].terra + data.terra
-      // const assetObj = {
-      //   id: item.id,
-      //   name: item.name,
-      //   image: item.image,
-      //   base_image: item.base_image,
-      //   thumbnail_image: item.thumbnail_image,
-      //   thumbnail_base_image: item.thumbnail_base_image,
-      // }
-      $selectedV3[item.asset_type] = data
-      $selectedAsset[item.asset_type] = data
+        $selectedV3.diabolic - $selectedV3[data.asset_type].diabolic + data.diabolic
+      $selectedV3.ignis = $selectedV3.ignis - $selectedV3[data.asset_type].ignis + data.ignis
+      $selectedV3.aqua = $selectedV3.aqua - $selectedV3[data.asset_type].aqua + data.aqua
+      $selectedV3.aer = $selectedV3.aer - $selectedV3[data.asset_type].aer + data.aer
+      $selectedV3.terra = $selectedV3.terra - $selectedV3[data.asset_type].terra + data.terra
+      $selectedV3[data.asset_type] = data
+      $selectedAsset[data.asset_type] = data
 
       // const assetList = assetImageList()
       // const baseImageList: Array<object> = assetBaseImageList(assetList)
@@ -143,7 +161,7 @@
                   style="cursor: auto; background-image: url({item.thumbnail_image});"
                 >
                   <div class="unselect-text-wrap">
-                    <div class="unselect-text">x</div>
+                    <div class="unselect-text" on:click={() => unselect(item)}>x</div>
                   </div>
                   <div class="equiped-text-wrap">
                     <div class="equip-text">equiped</div>

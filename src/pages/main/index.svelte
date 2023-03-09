@@ -8,10 +8,10 @@
 
   const menuData: Array<MenuInfo> = [
     // 개발중
-    // {
-    //   name: 'Omega Mint',
-    //   link: '/omega-mint',
-    // },
+    {
+      name: 'Omega Mint',
+      link: '/omega-mint',
+    },
     {
       name: 'Omega Equip',
       link: '/equip',
