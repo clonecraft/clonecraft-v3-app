@@ -6,10 +6,11 @@ const amberCA = '0x3bd0911e1c71f817f402b904b2fccc4e33b6db44'
 const omegaCA = ''
 const klayswapExchangeCA = '0x3bd0911e1c71f817f402b904b2fccc4e33b6db44'
 const klayswapUtilsCA = '0x7A74B3be679E194E1D6A0C29A343ef8D2a5AC876'
+const v3SaleCA = '0xd09aFC46575D0d30Bd7fB30b31e2744DB8b902E2'
 
 // testnet
 // const kpaxCA = '0x69B363541fe4dE7C1Af54B86021F67c53724d2d7'
 // const nectarCA = '0xcE0cc8ab6E565DC9EaaF280a58463201E46173d2'
 // const PaxSwapCA = '0x920cAb83da1292b4FCC47e2D24E75ed7B7349260'
 
-export { kpaxCA, nectarCA, paxSwapCA, mixCA, amberCA, klayswapUtilsCA, klayswapExchangeCA }
+export { kpaxCA, nectarCA, paxSwapCA, mixCA, amberCA, klayswapUtilsCA, klayswapExchangeCA, v3SaleCA }

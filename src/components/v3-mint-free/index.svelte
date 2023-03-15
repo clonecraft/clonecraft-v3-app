@@ -1,21 +1,53 @@
 <script lang="ts">
-  import { ethers } from 'ethers'
   import { onMount } from 'svelte'
+  import {
+    freeSaleMint,
+    getFreeSaleCount,
+    getFreeSaleCountPerAddress,
+    getSaleEpoch,
+  } from '@/blockchain/contracts/V3Sale'
 
   onMount(async () => {
     if (window.klaytn !== undefined && window.klaytn._kaikas.isEnabled()) {
-      // $myKlayBalance = ethers.utils.formatEther(await balanceOfKlay())
+      saleEpoch = await getSaleEpoch()
+      freeSaleCount = calcFreeSaleCount(await getFreeSaleCount(saleEpoch))
+      isFreeMint = await getFreeSaleCountPerAddress(saleEpoch, window.klaytn.selectedAddress)
     }
   })
+
+  let freeSaleCount: any = ''
+  let saleEpoch: any = null
+  let isFreeMint: any = false
+
+  async function omegaFreeSaleMint() {
+    saleEpoch = await getSaleEpoch()
+    try {
+      await freeSaleMint()
+      freeSaleCount = calcFreeSaleCount(await getFreeSaleCount(saleEpoch))
+      isFreeMint = await getFreeSaleCountPerAddress(saleEpoch, window.klaytn.selectedAddress)
+      alert('Free Mint Success')
+    } catch (error) {
+      alert('Free Mint Failed')
+    }
+  }
+
+  function calcFreeSaleCount(num: any) {
+    return 10 - parseInt(num)
+  }
 </script>
 
 <div class="box">
   <div class="box-title">CxNxD Omega Clone Free Mint</div>
   <div class="box-content">
     <div class="box-sub-wrap">
-      <div class="box-sub-text">Today Mining Remaining Count: 0</div>
+      <div class="box-sub-text">Today Mint Remaining Number: {freeSaleCount}</div>
+      {#if isFreeMint === true}
+        <div class="box-sub-text">Minting participation: participated</div>
+      {:else}
+        <div class="box-sub-text">Minting participation: No participate</div>
+      {/if}
     </div>
-    <button class="normal-button">Free Mint</button>
+    <button class="normal-button" on:click={() => omegaFreeSaleMint()}>Free Mint</button>
   </div>
 </div>
 
@@ -43,20 +75,6 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-  }
-
-  input {
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid $inline-color;
-    height: 30px;
-    font-size: 18px;
-    background: none;
-    background-color: rgba(0, 0, 0, 0.65);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    color: $text-color;
   }
 
   .normal-button {

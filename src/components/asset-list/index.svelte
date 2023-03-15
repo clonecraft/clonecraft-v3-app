@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Canvas, Image } from 'canvas'
   import mergeImages from 'merge-images'
+  import AssetInfoModal from '@/components/modal/asset-info.svelte'
   import { myAssetList, selectedV3, selectedAsset, selectedV3Original } from '@/stores/index'
 
   const assetMenuList = [
@@ -42,6 +43,8 @@
     },
   ]
   let selectedType = 'background'
+  let modalState = false
+  let selectedAssetInfoData: object
 
   function unselect(item: any) {
     const data = { ...item }
@@ -105,6 +108,11 @@
     }
   }
 
+  function assetInfo(data: any) {
+    modalState = !modalState
+    selectedAssetInfoData = data
+  }
+
   async function merge(imgData: Array<object>): Promise<string> {
     const b64 = await mergeImages(imgData, {
       Canvas: Canvas,
@@ -134,6 +142,14 @@
     return data
   }
 </script>
+
+<AssetInfoModal
+  {modalState}
+  assetData={selectedAssetInfoData}
+  on:click={() => {
+    modalState = !modalState
+  }}
+/>
 
 <div class="box">
   <div class="box-title">CxNxD Asset List</div>
@@ -182,7 +198,7 @@
                 {item.name.length > 30 ? item.name.substr(0, 30 - 2) + '...' : item.name}
               </div>
               <div class="asset-amount">x{item.balance}</div>
-              <button class="normal-button">info</button>
+              <button class="normal-button" on:click={() => assetInfo(item)}>info</button>
             </div>
           </div>
         {/if}

@@ -623,7 +623,7 @@
 </div>
 
 <style lang="scss">
-  .loading {
+  /* .loading {
     width: 188px;
     height: 188px;
     display: flex;
@@ -631,7 +631,7 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 100000;
-  }
+  } */
   .button-wrap {
     .normal-button {
       border: none;
