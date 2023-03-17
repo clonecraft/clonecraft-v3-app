@@ -760,7 +760,7 @@
         margin-bottom: 10px;
       }
     }
-    .skill-wrap {
+    /* .skill-wrap {
       display: flex;
       .skill {
         width: 110px;
@@ -771,7 +771,7 @@
         background-size: cover;
         background-position: center;
       }
-    }
+    } */
     .box-content-title {
       font-family: 'Trajan Pro Bold';
       font-size: 22px;
