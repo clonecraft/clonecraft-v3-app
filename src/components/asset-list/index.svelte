@@ -2,7 +2,13 @@
   import { Canvas, Image } from 'canvas'
   import mergeImages from 'merge-images'
   import AssetInfoModal from '@/components/modal/asset-info.svelte'
-  import { myAssetList, selectedV3, selectedAsset, selectedV3Original } from '@/stores/index'
+  import {
+    myAssetList,
+    selectedV3,
+    selectedAsset,
+    selectedV3Original,
+    selectedAssetList,
+  } from '@/stores/index'
 
   const assetMenuList = [
     {
@@ -69,6 +75,10 @@
     $selectedV3.aer = $selectedV3.aer - data.aer + $selectedV3Original[data.asset_type].aer
     $selectedV3.terra = $selectedV3.terra - data.terra + $selectedV3Original[data.asset_type].terra
     $selectedV3[data.asset_type] = $selectedV3Original[data.asset_type]
+    const filteredArr = $selectedAssetList.filter(
+      (v: any) => v !== $selectedAsset[data.asset_type].id
+    )
+    $selectedAssetList = filteredArr
     $selectedAsset[data.asset_type] = {
       id: null,
     }
@@ -98,8 +108,12 @@
       $selectedV3.aer = $selectedV3.aer - $selectedV3[data.asset_type].aer + data.aer
       $selectedV3.terra = $selectedV3.terra - $selectedV3[data.asset_type].terra + data.terra
       $selectedV3[data.asset_type] = data
+      const filteredArr = $selectedAssetList.filter(
+        (v: any) => v !== $selectedAsset[data.asset_type].id
+      )
+      $selectedAssetList = filteredArr
+      $selectedAssetList.push(data.id)
       $selectedAsset[data.asset_type] = data
-
       // const assetList = assetImageList()
       // const baseImageList: Array<object> = assetBaseImageList(assetList)
       // const mergedImage = await merge(baseImageList)

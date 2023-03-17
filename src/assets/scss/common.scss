@@ -57,6 +57,18 @@ html body {
   user-select: none;
 }
 
+.unnormal-button {
+  border: 1px solid $inline-color;
+  padding: 10px 25px;
+  color: #cccccc;
+  font-family: 'Trajan Pro Regular';
+  background-color: #888888;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .normal-button {
   border: 1px solid $inline-color;
   padding: 10px 25px;

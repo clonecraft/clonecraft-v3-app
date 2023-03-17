@@ -22,6 +22,7 @@ export const selectedV3Original: any = writable({
 export const selectedV3: any = writable({
   id: null,
 })
+export const selectedAssetList: any = writable([])
 export const selectedAsset: any = writable({
   background: {
     id: null,

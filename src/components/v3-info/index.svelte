@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { selectedAsset, selectedV3, selectedV3Original } from '@/stores/index'
+  import { selectedAsset, selectedV3, selectedV3Original, selectedAssetList } from '@/stores/index'
   import { onMount } from 'svelte'
+  import EquipConfirmModal from '@/components/modal/equip-confirm.svelte'
 
   onMount(() => {
     $selectedV3 = {
@@ -46,6 +47,16 @@
     }
   })
 
+  let equipModalState: boolean = false
+
+  function checkEquipModal() {
+    if ($selectedAssetList.length > 0) {
+      equipModalState = !equipModalState
+    } else {
+      alert('Please select nft')
+    }
+  }
+
   function numberCheck(num: number) {
     if (num >= 0) {
       return `+${num}`
@@ -54,6 +65,13 @@
     }
   }
 </script>
+
+<EquipConfirmModal
+  bind:modalState={equipModalState}
+  omegaId={$selectedV3.id}
+  assetData={$selectedAssetList}
+  on:click={checkEquipModal}
+/>
 
 <div class="box">
   <div class="box-title">CxNxD Omega Clone Info</div>
@@ -404,13 +422,13 @@
             </div>
           </div>
         </div>
-        <div class="line" />
+        <!-- <div class="line" />
         <div class="box-content-title">skills</div>
         <div class="skill-wrap">
           <div class="skill" />
           <div class="skill" />
           <div class="skill" />
-        </div>
+        </div> -->
       </div>
     </div>
   {:else}
@@ -607,18 +625,18 @@
             </div>
           </div>
         </div>
-        <div class="line" />
+        <!-- <div class="line" />
         <div class="box-content-title">skills</div>
         <div class="skill-wrap">
           <div class="skill" />
           <div class="skill" />
           <div class="skill" />
-        </div>
+        </div> -->
       </div>
     </div>
   {/if}
   <div class="button-wrap">
-    <div class="normal-button">Equip</div>
+    <div class="normal-button" on:click={checkEquipModal}>Equip</div>
   </div>
 </div>
 

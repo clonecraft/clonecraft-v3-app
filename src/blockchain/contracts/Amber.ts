@@ -8,4 +8,10 @@ async function balanceOfAmber() {
   return balance
 }
 
-export { balanceOfAmber }
+async function approveOfAmber(spender: string, amount: any) {
+  const contract = new caver.klay.Contract(ERC20ABI, amberCA)
+  const tx = contract.methods.approve(spender, amount).send({ from: klaytn.selectedAddress, gas: '210000' })
+  return tx
+}
+
+export { balanceOfAmber, approveOfAmber }
