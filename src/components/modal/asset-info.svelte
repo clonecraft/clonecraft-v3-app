@@ -22,7 +22,7 @@
           <div class="line" />
           <div class="asset-infos">
             <div class="asset-info-wrap">
-              <div class="asset-info-title">Id: {assetData.id}</div>
+              <div class="asset-info-title">Asset Id: {assetData.asset_id}</div>
             </div>
             <div class="asset-info-wrap">
               <div class="asset-info-title">grade: {assetData.asset_grade}</div>

@@ -23,4 +23,10 @@ async function v3AssetIdsFromAssetTypes(v3Id: Number, assetTypes: Array<any>) {
   return types
 }
 
-export { equip, getAssetType, v3AssetIdsFromAssetTypes }
+async function getPayment(keyToken: string, keyTokenAmount: Number, pathA: Array<string>, pathB: Array<string>) {
+  const contract = new caver.klay.Contract(EquipABI, equipCA)
+  const types = await contract.methods.getPayment(keyToken, keyTokenAmount, pathA, pathB).call()
+  return types
+}
+
+export { equip, getAssetType, v3AssetIdsFromAssetTypes, getPayment }

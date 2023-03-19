@@ -56,7 +56,7 @@
         <div class="omega-wrap">
           <div class="omega-frame">
             {#if $selectedV3.id === item.id}
-              <div class="omega-image" style="cursor: auto; background-image: url({item.image});">
+              <div class="omega-image" style="cursor: auto; background-image: url({item.thumbnail_image});">
                 <div class="selected-equip-text-wrap">
                   <div class="equip-text">selected</div>
                 </div>
@@ -64,7 +64,7 @@
             {:else}
               <div
                 class="omega-image"
-                style="background-image: url({item.image});"
+                style="background-image: url({item.thumbnail_image});"
                 on:click={() => select(item.id)}
               >
                 <div class="equip-text-wrap">

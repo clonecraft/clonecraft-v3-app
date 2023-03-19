@@ -2,8 +2,12 @@
   import { beforeUpdate } from 'svelte'
   import { ethers } from 'ethers'
   import { klaytn } from '@/blockchain/chain/klaytn'
-  import { equip, getAssetType, v3AssetIdsFromAssetTypes } from '@/blockchain/contracts/Equip'
-  import { lpTokenAmount } from '@/blockchain/contracts/PriceCalculator'
+  import {
+    equip,
+    getAssetType,
+    v3AssetIdsFromAssetTypes,
+    getPayment,
+  } from '@/blockchain/contracts/Equip'
   import { balanceOfAmber, approveOfAmber } from '@/blockchain/contracts/Amber'
   import { equipCA } from '@/blockchain/chain/address'
   import {
@@ -69,21 +73,20 @@
   }
 
   const keyTokenCA = '0xcee8faf64bb97a73bb51e115aa89c17ffa8dd167'
-  const baseKeyTokenAmount = 10000
+  const baseKeyTokenAmount = 1000000000
   const pathA = [
     '0xc6a2ad8cc6e4a7e08fc37cc5954be07d499e7654',
     '0xdd483a970a7a7fef2b223c3510fac852799a88bf',
   ]
   const pathB = ['0xc6a2ad8cc6e4a7e08fc37cc5954be07d499e7654']
-  // export let assetData: any
+  
   beforeUpdate(async () => {
     if (modalState) {
       const selectedAssetTypes = await getAssetType(assetData)
       const unequipAssetList = await v3AssetIdsFromAssetTypes(omegaId, selectedAssetTypes)
       unequipAssetListLength = unequipAssetList.length
       const keyTokenAmount = baseKeyTokenAmount * (assetData.length + unequipAssetListLength)
-      // const thisFeePrice = await lpTokenAmount(keyTokenCA, keyTokenAmount, pathA, pathB)
-      const thisFeePrice = '300920000000000000000'
+      const thisFeePrice = await getPayment(keyTokenCA, keyTokenAmount, pathA, pathB)
       feePriceFormatEther = ethers.utils.formatEther(thisFeePrice)
       feePrice = parseInt(feePriceFormatEther) + 1
       const thisAmberBalance = await balanceOfAmber()
@@ -98,14 +101,14 @@
   })
 
   async function init() {
-    $myV3List = await getMyV3List(klaytn.selectedAddress)
-    $myAssetList = await getMyAssetList(klaytn.selectedAddress)
     $selectedAssetList = []
     $selectedAsset = initSlelctedAsset
     $selectedV3 = initSelectedV3
     $selectedV3Original = initSelectedV3
     equipButtonActive = false
     modalState = false
+    $myV3List = await getMyV3List(klaytn.selectedAddress)
+    $myAssetList = await getMyAssetList(klaytn.selectedAddress)
   }
 
   async function amberApprove() {
@@ -121,8 +124,8 @@
   async function omegaEquip() {
     try {
       await equip(omegaId, assetData)
-      init()
       alert('Equip Success')
+      init()
     } catch (e) {
       console.log(e)
       alert('Equip Error')
@@ -156,7 +159,7 @@
         </div>
       </div>
       <div class="button-wrap">
-        {#if !equipButtonActive}
+        {#if !equipButtonActive && approveButtonActive}
           <div class="normal-button" on:click={amberApprove}>Approve</div>
         {:else}
           <div class="unnormal-button">Approve</div>

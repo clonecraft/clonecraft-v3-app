@@ -8,7 +8,7 @@ const omegaCA = ''
 const klayswapExchangeCA = '0x3bd0911e1c71f817f402b904b2fccc4e33b6db44'
 const klayswapUtilsCA = '0x7A74B3be679E194E1D6A0C29A343ef8D2a5AC876'
 const v3SaleCA = '0xd09aFC46575D0d30Bd7fB30b31e2744DB8b902E2'
-const equipCA = '0xe1e09D2Bc935E9100947894d2ef3A78F8723f4FE'
+const equipCA = '0xBa01F76496ce0771257D1B1Ac429733E61BE3dAc'
 const priceCalculatorCA = '0x6c7d7999fccf13ddf77cf72fbefae680348ca28d'
 
 // testnet
