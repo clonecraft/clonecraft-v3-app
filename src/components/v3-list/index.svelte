@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isConnect, myV3List, selectedAsset } from '@/stores/index'
+  import { isConnect, myV3List, selectedAsset, selectedAssetList } from '@/stores/index'
   import { selectedV3, selectedV3Original } from '@/stores/index'
   import { METADATA_API_BASE_URI } from '@/constants/index'
 
@@ -7,6 +7,7 @@
     const data = await (await fetch(`${METADATA_API_BASE_URI}/v3/metadata/${id}`)).json()
     $selectedV3 = { ...data }
     $selectedV3Original = { ...data }
+    $selectedAssetList = []
     $selectedAsset = {
       background: {
         id: null,
