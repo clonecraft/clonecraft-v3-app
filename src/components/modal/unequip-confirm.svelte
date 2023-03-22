@@ -117,11 +117,11 @@
   async function omegaUnequip() {
     try {
       await unequip(omegaId, assetData)
-      alert('Equip Success')
+      alert('Unequip Success')
       init()
     } catch (e) {
       console.log(e)
-      alert('Equip Error')
+      alert('Unequip Error')
     }
   }
 </script>

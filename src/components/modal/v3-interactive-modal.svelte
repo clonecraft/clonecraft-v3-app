@@ -52,7 +52,6 @@
   beforeUpdate(async () => {
     if (modalState && selectedUnequipAssetIds.length === 0) {
       thisEquipState = await getEquipState(v3Data.id)
-      console.log(thisEquipState)
     } else if (!modalState) {
       selectedUnequipAssetIds = []
       selectedAsset = {
@@ -502,20 +501,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      .v3-img {
-        position: absolute;
-        width: 186px;
-        height: 186px;
-        object-fit: cover;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-      }
-      .sample {
-        width: 188px;
-        height: 186px;
-        background-color: $inbox-color;
-      }
     }
 
     .asset-images {
@@ -616,37 +601,6 @@
       font-family: 'Trajan Pro Bold';
       font-size: 22px;
       margin-bottom: 10px;
-    }
-    .status-item {
-      display: flex;
-      margin-bottom: 15px;
-      .status-title {
-        width: 20%;
-        display: flex;
-        align-items: flex-end;
-        color: $inline-color;
-      }
-      .status-content-wrap {
-        width: 80%;
-        .amount-wrap {
-          display: flex;
-          justify-content: space-between;
-          .status-amount {
-            font-size: 12px;
-          }
-        }
-        .status-graph {
-          display: flex;
-          width: 100%;
-          height: 15px;
-          border: 1px solid $inline-color;
-          box-sizing: border-box;
-          background-color: $inbox-color;
-          .status-graph-amount {
-            background-color: $text-color;
-          }
-        }
-      }
     }
   }
 </style>
