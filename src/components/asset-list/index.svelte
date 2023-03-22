@@ -126,35 +126,6 @@
     modalState = !modalState
     selectedAssetInfoData = data
   }
-
-  async function merge(imgData: Array<object>): Promise<string> {
-    const b64 = await mergeImages(imgData, {
-      Canvas: Canvas,
-      Image: Image,
-      width: 2500,
-      height: 2500,
-      crossOrigin: 'Anonymous',
-    })
-    // const base64Img: string = b64.split(',')[1]
-    const base64Img: string = b64
-    return base64Img
-  }
-
-  function assetBaseImageList(assetList: any): Array<object> {
-    const baseImageList = []
-    for (let i = 0; i < assetList.length; i++) {
-      baseImageList.push({ src: assetList[i].base_image })
-    }
-    return baseImageList
-  }
-
-  function assetImageList() {
-    const data = []
-    for (let i = 0; i < assetMenuList.length; i++) {
-      data.push($selectedV3[assetMenuList[i].type])
-    }
-    return data
-  }
 </script>
 
 <AssetInfoModal
