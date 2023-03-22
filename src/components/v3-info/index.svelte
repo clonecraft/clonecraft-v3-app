@@ -2,6 +2,7 @@
   import { selectedAsset, selectedV3, selectedV3Original, selectedAssetList } from '@/stores/index'
   import { onMount } from 'svelte'
   import EquipConfirmModal from '@/components/modal/equip-confirm.svelte'
+  import AssetInfoModal from '@/components/modal/asset-info.svelte'
 
   onMount(() => {
     $selectedV3 = {
@@ -48,6 +49,8 @@
   })
 
   let equipModalState: boolean = false
+  let assetModalState: boolean = false
+  let selectedAssetInfoData: object
 
   function checkEquipModal() {
     if ($selectedAssetList.length > 0) {
@@ -64,6 +67,15 @@
       return num
     }
   }
+
+  function checkAssetEquiped(data: any) {
+    if (data.id === 0) {
+      alert('No asset equiped')
+      return
+    }
+    assetModalState = !assetModalState
+    selectedAssetInfoData = data
+  }
 </script>
 
 <EquipConfirmModal
@@ -73,6 +85,14 @@
   on:click={checkEquipModal}
 />
 
+<AssetInfoModal
+  modalState={assetModalState}
+  assetData={selectedAssetInfoData}
+  on:click={() => {
+    assetModalState = !assetModalState
+  }}
+/>
+
 <div class="box">
   <div class="box-title">CxNxD Omega Clone Info</div>
   {#if $selectedV3.id !== null}
@@ -80,7 +100,6 @@
       <div class="box-content-images">
         <div class="image-title">{$selectedV3.name}</div>
         <div class="clone-wrap">
-          <!-- <div class="v3-image" style="background-image: url({$selectedV3.image});"> -->
           <div class="v3-image">
             <div
               class="v3-img"
@@ -138,52 +157,88 @@
         </div>
         <div class="asset-images">
           <div
-            class="asset-image"
+            class="asset-image-select"
             style="background-image: url({$selectedV3.background.thumbnail_image});"
+            on:click={() => {
+              checkAssetEquiped($selectedV3.background)
+            }}
           />
           <div
-            class="asset-image"
+            class="asset-image-select"
             style="background-image: url({$selectedV3.situation.thumbnail_image});"
+            on:click={() => {
+              checkAssetEquiped($selectedV3.situation)
+            }}
           />
           <div
-            class="asset-image"
+            class="asset-image-select"
             style="background-image: url({$selectedV3.weapon.thumbnail_image});"
+            on:click={() => {
+              checkAssetEquiped($selectedV3.weapon)
+            }}
           />
           <div
-            class="asset-image"
+            class="asset-image-select"
             style="background-image: url({$selectedV3.body.thumbnail_image});"
+            on:click={() => {
+              checkAssetEquiped($selectedV3.body)
+            }}
           />
           <div
-            class="asset-image"
+            class="asset-image-select"
             style="background-image: url({$selectedV3.tattoo.thumbnail_image});"
+            on:click={() => {
+              checkAssetEquiped($selectedV3.tattoo)
+            }}
           />
           <div
-            class="asset-image"
+            class="asset-image-select"
             style="background-image: url({$selectedV3.mouth.thumbnail_image});"
+            on:click={() => {
+              checkAssetEquiped($selectedV3.mouth)
+            }}
           />
           <div
-            class="asset-image"
+            class="asset-image-select"
             style="background-image: url({$selectedV3.eyes.thumbnail_image});"
+            on:click={() => {
+              checkAssetEquiped($selectedV3.eyes)
+            }}
           />
           <div
-            class="asset-image"
+            class="asset-image-select"
             style="background-image: url({$selectedV3.clothes.thumbnail_image});"
+            on:click={() => {
+              checkAssetEquiped($selectedV3.clothes)
+            }}
           />
           <div
-            class="asset-image"
+            class="asset-image-select"
             style="background-image: url({$selectedV3.hat.thumbnail_image});"
+            on:click={() => {
+              checkAssetEquiped($selectedV3.hat)
+            }}
           />
           <div
-            class="asset-image"
+            class="asset-image-select"
             style="background-image: url({$selectedV3.accessory.thumbnail_image});"
+            on:click={() => {
+              checkAssetEquiped($selectedV3.accessory)
+            }}
           />
           <div
-            class="asset-image"
+            class="asset-image-select"
             style="background-image: url({$selectedV3.mask.thumbnail_image});"
+            on:click={() => {
+              checkAssetEquiped($selectedV3.mask)
+            }}
           />
           <div
-            class="asset-image"
+            class="asset-image-select"
             style="background-image: url({$selectedV3.effect.thumbnail_image});"
+            on:click={() => {
+              checkAssetEquiped($selectedV3.effect)
+            }}
           />
         </div>
       </div>
@@ -736,6 +791,24 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
+      }
+      .asset-image-select {
+        display: flex;
+        flex-flow: wrap;
+        flex-wrap: wrap;
+        width: 25%;
+        border: 1px solid $inline-color;
+        box-sizing: border-box;
+        width: 94px;
+        height: 94px;
+        background-color: $inbox-color;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
+      }
+      .asset-image-select:hover {
+        border: 3px solid $active-color;
       }
     }
   }

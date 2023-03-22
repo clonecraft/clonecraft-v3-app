@@ -2,6 +2,10 @@
   import { isConnect, myV3List, selectedAsset, selectedAssetList } from '@/stores/index'
   import { selectedV3, selectedV3Original } from '@/stores/index'
   import { METADATA_API_BASE_URI } from '@/constants/index'
+  import V3InteractiveModal from '@/components/modal/v3-interactive-modal.svelte'
+
+  let v3InteractiveModalState: boolean = false
+  let selectedV3Data: any = null
 
   async function select(id: any) {
     const data = await (await fetch(`${METADATA_API_BASE_URI}/v3/metadata/${id}`)).json()
@@ -49,6 +53,14 @@
   }
 </script>
 
+<V3InteractiveModal
+  bind:modalState={v3InteractiveModalState}
+  v3Data={selectedV3Data}
+  on:click={() => {
+    v3InteractiveModalState = !v3InteractiveModalState
+  }}
+/>
+
 <div class="box">
   <div class="box-title">CxNxD Omega Clone List</div>
   {#if $isConnect === true}
@@ -57,7 +69,10 @@
         <div class="omega-wrap">
           <div class="omega-frame">
             {#if $selectedV3.id === item.id}
-              <div class="omega-image" style="cursor: auto; background-image: url({item.thumbnail_image});">
+              <div
+                class="omega-image"
+                style="cursor: auto; background-image: url({item.thumbnail_image});"
+              >
                 <div class="selected-equip-text-wrap">
                   <div class="equip-text">selected</div>
                 </div>
@@ -75,6 +90,13 @@
             {/if}
             <div class="omega-title">CxNxD Omega</div>
             <div class="omega-number">#{item.id}</div>
+            <button
+              class="normal-button"
+              on:click={() => {
+                selectedV3Data = item
+                v3InteractiveModalState = !v3InteractiveModalState
+              }}>info</button
+            >
           </div>
         </div>
       {/each}
@@ -91,7 +113,7 @@
   .box-content {
     overflow: scroll;
     flex-wrap: wrap;
-    max-height: 240px;
+    max-height: 260px;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
@@ -101,10 +123,18 @@
   .omega-wrap {
     min-width: 20%;
     padding: 5px;
+    padding-bottom: 10px;
     box-sizing: border-box;
     .omega-frame {
       border: 1px solid $inline-color;
       box-sizing: border-box;
+      .normal-button {
+        padding: 4px;
+        width: 100%;
+        border: none;
+        border-top: 1px solid $inline-color;
+        box-sizing: border-box;
+      }
       .omega-title {
         font-size: 12px;
         max-width: 178px;
