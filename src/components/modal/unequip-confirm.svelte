@@ -129,7 +129,7 @@
 {#if modalState}
   <div class="modal-background" on:click|self>
     <div class="box">
-      <div class="box-title">Equip Confirm</div>
+      <div class="box-title">Unequip Confirm</div>
       <div class="box-content">
         <div class="content-wrap">
           <div class="content">
