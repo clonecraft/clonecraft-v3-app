@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { Canvas, Image } from 'canvas'
-  import mergeImages from 'merge-images'
   import AssetInfoModal from '@/components/modal/asset-info.svelte'
   import {
     myAssetList,
@@ -114,11 +112,6 @@
       $selectedAssetList = filteredArr
       $selectedAssetList.push(data.id)
       $selectedAsset[data.asset_type] = data
-      // const assetList = assetImageList()
-      // const baseImageList: Array<object> = assetBaseImageList(assetList)
-      // const mergedImage = await merge(baseImageList)
-      // $selectedV3.image = mergedImage
-      // $v3ImageMergeLoading = false
     }
   }
 
