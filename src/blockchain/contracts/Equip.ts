@@ -6,7 +6,7 @@ async function equip(v3Id: Number, assetTypes: Array<Number>) {
   const contract = new caver.klay.Contract(EquipABI, equipCA)
   const data = await contract.methods.equip(v3Id, assetTypes).send({
     from: klaytn.selectedAddress,
-    gas: '2500000'
+    gas: '25000000'
   })
   return data
 }
@@ -15,7 +15,7 @@ async function unequip(v3Id: Number, assetTypes: Array<Number>) {
   const contract = new caver.klay.Contract(EquipABI, equipCA)
   const data = await contract.methods.unequip(v3Id, assetTypes).send({
     from: klaytn.selectedAddress,
-    gas: '2500000'
+    gas: '25000000'
   })
   return data
 }

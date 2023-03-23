@@ -79,7 +79,7 @@
     '0xdd483a970a7a7fef2b223c3510fac852799a88bf',
   ]
   const pathB = ['0xc6a2ad8cc6e4a7e08fc37cc5954be07d499e7654']
-  
+
   beforeUpdate(async () => {
     if (modalState) {
       const selectedAssetTypes = await getAssetType(assetData)
@@ -92,6 +92,7 @@
       const thisAmberBalance = await balanceOfAmber()
       const thisAmberBalanceFormatEther = ethers.utils.formatEther(thisAmberBalance)
       feePrice = parseInt(feePriceFormatEther) + 1
+
       if (parseInt(thisAmberBalanceFormatEther) > feePrice) {
         approveButtonActive = true
       } else {
@@ -149,7 +150,7 @@
           </div>
           <div class="content">
             <div class="content-title">Total Fee</div>
-            <div class="content-body">{feePriceFormatEther} Amber</div>
+            <div class="content-body">{parseFloat(feePriceFormatEther).toFixed(6)} Amber</div>
           </div>
         </div>
       </div>

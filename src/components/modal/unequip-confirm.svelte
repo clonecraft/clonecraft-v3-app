@@ -138,7 +138,7 @@
           </div>
           <div class="content">
             <div class="content-title">Total Fee</div>
-            <div class="content-body">{feePriceFormatEther} Amber</div>
+            <div class="content-body">{parseFloat(feePriceFormatEther).toFixed(6)} Amber</div>
           </div>
         </div>
       </div>
