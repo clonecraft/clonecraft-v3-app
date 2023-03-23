@@ -1,4 +1,4 @@
-const METADATA_API_BASE_URI = 'http://127.0.0.1:3000';
+const METADATA_API_BASE_URI = 'https://metadata.clonesneverdie.com';
 
 export {
   METADATA_API_BASE_URI,

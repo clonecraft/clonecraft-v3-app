@@ -68,7 +68,7 @@
   }
 
   const keyTokenCA = '0xcee8faf64bb97a73bb51e115aa89c17ffa8dd167'
-  const baseKeyTokenAmount = 1000000000
+  const baseKeyTokenAmount = 100000
   const pathA = [
     '0xc6a2ad8cc6e4a7e08fc37cc5954be07d499e7654',
     '0xdd483a970a7a7fef2b223c3510fac852799a88bf',
