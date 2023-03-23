@@ -3,7 +3,7 @@ import V3Mint from './pages/v3mint/index.svelte'
 import Equip from './pages/equip/index.svelte'
 import Amber from './pages/amber/index.svelte'
 import Pax from './pages/pax/index.svelte'
-// import Nectar from './pages/nectar/index.svelte'
+import Collection from './pages/collection/index.svelte'
 import NotFound from './pages/NotFound/index.svelte'
 
 export default {
@@ -12,7 +12,7 @@ export default {
   '/equip': Equip,
   '/amber': Amber,
   '/pax': Pax,
-  // '/nectar': Nectar,
+  '/collection': Collection,
 
   // Catch-all, must be last
   '*': NotFound,

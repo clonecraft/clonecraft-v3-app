@@ -20,14 +20,13 @@
       name: 'Amber',
       link: '/amber',
     },
-    // 삭제고려
-    // {
-    //   name: 'Nectar',
-    //   link: '/nectar',
-    // },
     {
       name: 'Pax swap to Nectar',
       link: '/pax',
+    },
+    {
+      name: 'Collection',
+      link: '/collection',
     },
   ]
 </script>
