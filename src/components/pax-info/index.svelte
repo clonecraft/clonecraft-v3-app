@@ -21,11 +21,7 @@
   <div class="box-content">
     <div class="box-sub-text">remaining pax : {remainPax}</div>
     <div class="box-sub-text">Swap Progress : {progressPercent}%</div>
-    <div class="box-sub-text">
-      Polygon Pax Swap to KPAX : <a href="https://pax.gaiabridge.com/" target="_blank"
-        >Gaia Bridge</a
-      >
-    </div>
+    <div class="box-sub-text">Polygon Pax Swap to KPAX : Gaia Bridge (현재 사용 불가)</div>
   </div>
 </div>
 
