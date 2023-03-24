@@ -238,8 +238,8 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    background-color: rgba(0, 0, 0, 0.8);
     .unselect-text {
-      position: absolute;
       display: block;
       opacity: 1;
       font-size: 20px;
@@ -324,6 +324,7 @@
             .equip-text {
               display: block;
               opacity: 1;
+              margin-bottom: 50px;
             }
           }
         }
